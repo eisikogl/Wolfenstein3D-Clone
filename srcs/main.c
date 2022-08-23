@@ -6,11 +6,15 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/08/23 15:05:27 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/08/23 15:23:23 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
+
+// The map must be composed of only 6 possible characters: 0 for an empty space,
+// 1 for a wall, and N,S,E or W for the player’s start position and spawning
+// orientation.
 
 int main()
 {
