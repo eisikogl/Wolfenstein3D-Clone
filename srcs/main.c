@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/08/23 15:23:23 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:19:09 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 
 int main()
 {
-    // s_gamedata *gamedata;
-    // void	*mlx;
-    // mlx = mlx_init();
-    
+    void	*mlx;
+    mlx = mlx_init();
+
+    mlx_new_window(mlx,500,500,"Hello World");    
     // mlx_hook(gamedata->mlx_window, 2, 1L << 0, key_event, gamedata);
 	// mlx_hook(gamedata->mlx_window, 17, 1L << 17, exit_game, gamedata);
-	// mlx_loop(gamedata->mlx);
+	mlx_loop(mlx);
 }

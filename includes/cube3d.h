@@ -20,10 +20,13 @@
 #include <unistd.h>
 #include <math.h>
 
-typedef struct t_gamedata
+#include "../libs/mlx/mlx.h"
+#include "../libs/Libft/libft.h"
+
+typedef struct s_gamedata
 {
     /* data */
-}s_gamedata;
+}t_gamedata;
 
 
 #endif
