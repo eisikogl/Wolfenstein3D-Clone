@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:56:45 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/09/26 18:21:09 by calion           ###   ########.fr       */
+/*   Updated: 2022/09/26 19:24:28 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 #include "../libs/mlx/mlx.h"
 #include "../libs/Libft/libft.h"
 
+#include "../includes/get_next_line.h"
+
 typedef struct s_gamedata
 {
     /* data */
@@ -32,6 +34,8 @@ typedef struct s_gamedata
 typedef struct s_map
 {
     char *map_path;
+    char *map;
+    char **map_split;
 
     char *north_texture_path;
     char *south_texture_path;

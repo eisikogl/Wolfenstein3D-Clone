@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/09/26 18:21:57 by calion           ###   ########.fr       */
+/*   Updated: 2022/09/26 22:10:06 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@ int main(int argc,char **argv)
     void	*mlx;
     t_map   call_map;
 
+    if(argc != 2)
+        printf("add map \n");
     mlx = mlx_init();
     call_map.map_path = argv[1];
     read_map(call_map);
-    mlx_new_window(mlx,500,500,"Hello World");    
+    
+    //mlx_new_window(mlx,500,500,"Hello World");
     //mlx_hook(gamedata->mlx_window, 2, 1L << 0, key_event, gamedata);
 	// mlx_hook(gamedata->mlx_window, 17, 1L << 17, exit_game, gamedata);
 	mlx_loop(mlx);
