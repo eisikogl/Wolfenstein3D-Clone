@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:56:45 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/08/23 15:04:17 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/09/26 18:21:09 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <unistd.h>
@@ -28,5 +29,21 @@ typedef struct s_gamedata
     /* data */
 }t_gamedata;
 
+typedef struct s_map
+{
+    char *map_path;
+
+    char *north_texture_path;
+    char *south_texture_path;
+    char *west_texture_path;
+    char *east_texture_path;
+
+    int *floor_color;
+    int *ceiling_color;
+    /* data */
+}t_map;
+
+
+void read_map(t_map call_map);
 
 #endif
