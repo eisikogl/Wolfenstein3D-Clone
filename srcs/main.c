@@ -25,8 +25,14 @@ int main(int argc,char **argv)
         printf("add map \n");
     mlx = mlx_init();
     call_map.map_path = argv[1];
-    read_map(call_map);
-    
+    read_map(&call_map);
+    printf("%s \n",call_map.north_texture_path);
+    printf("%s \n",call_map.south_texture_path);
+    printf("%s \n",call_map.east_texture_path);
+    printf("%s \n",call_map.west_texture_path);
+    printf("%d %d %d\n",call_map.floor_color[0],call_map.floor_color[1],call_map.floor_color[2]);
+    printf("%d %d %d\n",call_map.ceiling_color[0],call_map.ceiling_color[1],call_map.ceiling_color[2]);
+    printf("%s \n",call_map.map);
     //mlx_new_window(mlx,500,500,"Hello World");
     //mlx_hook(gamedata->mlx_window, 2, 1L << 0, key_event, gamedata);
 	// mlx_hook(gamedata->mlx_window, 17, 1L << 17, exit_game, gamedata);

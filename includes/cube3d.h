@@ -48,6 +48,6 @@ typedef struct s_map
 }t_map;
 
 
-void read_map(t_map call_map);
+void read_map(t_map *call_map);
 
 #endif
