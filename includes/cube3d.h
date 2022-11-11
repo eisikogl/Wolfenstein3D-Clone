@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:56:45 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/11/06 00:20:51 by calion           ###   ########.fr       */
+/*   Updated: 2022/11/08 17:01:07 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 
 #include "../includes/get_next_line.h"
 #define PI 3.14159265359 
+#define P2 PI/2
+#define P3 3*PI/2
 
 typedef struct s_gamedata
 {
@@ -34,16 +36,15 @@ typedef struct s_gamedata
     void *img_player;
     void *img_wall;
 
-    int  player_x;
-    int  player_y;
+    float  player_x;
+    float  player_y;
 
     float player_dy;
     float player_dx;
     float player_angle;
-}t_gamedata;
 
-typedef struct s_map
-{
+    int	mapX;
+	int mapY;
     char *map_path;
     char *map;
     char **map_split;
@@ -55,23 +56,24 @@ typedef struct s_map
 
     int *floor_color;
     int *ceiling_color;
-    /* data */
-}t_map;
+}t_gamedata;
 
 /*input_control*/
 int key_event(int key, t_gamedata *gamedata);
 
 /*read_map*/
-void read_map(t_map *call_map);
+void read_map(t_gamedata *call_map);
 
 /*exit_game*/
 int	exit_game(t_gamedata *gamedata);
 
 /*controlls*/
-int get_line_len(t_map *call_map);
-int get_height(t_map *call_map);
+int get_line_len(t_gamedata *call_map);
+int get_height(t_gamedata *call_map);
 void drawPlayer(t_gamedata *gamedata);
 void drawWall(t_gamedata *gamedata,int i,int j);
 void init(t_gamedata *gamedata);
+void pixelPlayer(t_gamedata *gamedata);
+void drawMap2(t_gamedata *call_map);
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:19:54 by calion            #+#    #+#             */
-/*   Updated: 2022/11/06 00:20:50 by calion           ###   ########.fr       */
+/*   Updated: 2022/11/08 03:29:31 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-void read_map(t_map *call_map)
+void read_map(t_gamedata *call_map)
 {
     int fd;
     fd = open(call_map->map_path,O_RDONLY);
@@ -103,7 +103,7 @@ void read_map(t_map *call_map)
     close(fd);
 }
 
-int get_line_len(t_map *call_map)
+int get_line_len(t_gamedata *call_map)
 {
 	int i = 0;
     int temp = 0;
@@ -125,7 +125,7 @@ int get_line_len(t_map *call_map)
 	return temp;
 }
 
-int get_height(t_map *call_map)
+int get_height(t_gamedata *call_map)
 {
 	int i = 0;
 	while(call_map->map_split[i] != NULL)
