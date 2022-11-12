@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/11/13 00:08:54 by calion           ###   ########.fr       */
+/*   Updated: 2022/11/13 00:16:41 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,17 +188,20 @@ void drawRays(t_gamedata *gamedata)
             	dof += 1;
             }
        }
+	   int color;
 		if(distVerti < distHori)
 		{
 			ray_x = vertiX;
 			ray_y = vertiY;
-			distT = distVerti; 
+			distT = distVerti;
+			color = 0x00FF0000;
 		}
 		if(distHori < distVerti)
 		{
 			ray_x = horiX;
 			ray_y = horiY;
 			distT = distHori;
+			color = 0x00FFF000;
 		}
         drawLine(gamedata,gamedata->player_x + 2,gamedata->player_y+2,
         ray_x ,ray_y,0x0000FF00);
@@ -222,7 +225,7 @@ void drawRays(t_gamedata *gamedata)
 	}
 	float WallOffset = 160-WallHeight/2;
 	
-	drawLine3d(gamedata,r+530,WallOffset,r+530,WallHeight+WallOffset,0x00FF0000);
+	drawLine3d(gamedata,r+530,WallOffset,r+530,WallHeight+WallOffset,color);
 	
 	ray_angle += Dgre/4;
 	if(ray_angle < 0)
