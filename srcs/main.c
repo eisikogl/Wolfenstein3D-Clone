@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/11/13 00:00:07 by calion           ###   ########.fr       */
+/*   Updated: 2022/11/13 00:08:54 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,26 @@ void drawLine(t_gamedata *gamedata, int beginX, int beginY,int endX,int endY,int
     }
 }
 
-// void drawLine3d(t_gamedata *gamedata, int beginX, int beginY,int endX,int endY,int color)
-// {
-//     float deltaX = endX - beginX;
-//     float deltaY = endY - beginY;
+void drawLine3d(t_gamedata *gamedata, int beginX, int beginY,int endX,int endY,int color)
+{
+    float deltaX = endX - beginX;
+    float deltaY = endY - beginY;
 
-//     int pixels = sqrt((deltaX * deltaX) + (deltaY * deltaY));
+    int pixels = sqrt((deltaX * deltaX) + (deltaY * deltaY));
 
-//     deltaX /= pixels; // 1
-//     deltaY /= pixels; // 0
-//     double pixelX = beginX;
-//     double pixelY = beginY;
-//     while (pixels)
-//     {
+    deltaX /= pixels; // 1
+    deltaY /= pixels; // 0
+    double pixelX = beginX;
+    double pixelY = beginY;
+    while (pixels)
+    {
 		
-// 		mlx_pixel_put(gamedata->mlx, gamedata->mlx_3dwindow, pixelX, pixelY, color);
-// 		pixelX += deltaX;
-// 		pixelY += deltaY;
-// 		--pixels;
-//     }
-// }
+		mlx_pixel_put(gamedata->mlx, gamedata->mlx_3dwindow, pixelX, pixelY, color);
+		pixelX += deltaX;
+		pixelY += deltaY;
+		--pixels;
+    }
+}
 
 float dist(float beginX,float beginY,float endX,float endY,float angle)
 {
@@ -74,7 +74,7 @@ void drawRays(t_gamedata *gamedata)
     //ray_x = ray_y / tan(ray_angle);
     //ray_y = ((map_height * 16) - player_y) / 16;
     //S(int)playery
-	//mlx_clear_window(gamedata->mlx,gamedata->mlx_3dwindow);
+	mlx_clear_window(gamedata->mlx,gamedata->mlx_3dwindow);
     r = 0;
     ray_angle = gamedata->player_angle - Dgre*30;
 	if(ray_angle <0)
@@ -85,7 +85,7 @@ void drawRays(t_gamedata *gamedata)
 	{
 		ray_angle -= 2*PI;
 	}
-	while(r<60)
+	while(r<240)
 	{
         dof = 0;
 		/*find shortest line*/
@@ -204,27 +204,27 @@ void drawRays(t_gamedata *gamedata)
         ray_x ,ray_y,0x0000FF00);
 
 	/*3d SCENE*/
-	// float ca = gamedata->player_angle - ray_angle;
-	// if(ca < 0)
-	// {
-	// 	ray_angle += 2*PI;
-	// }
-	// if(ray_angle<2*PI)
-	// {
-	// 	ray_angle-=2*PI;
-	// }
-	// distT = distT*cos(ca);
-	// int mapsize = gamedata->mapX * gamedata->mapY;
-	// float WallHeight = (64 * 320) / distT;
-	// if(WallHeight > 320)
-	// {
-	// 	WallHeight = 320;
-	// }
-	// float WallOffset = 160-WallHeight/2;
+	float ca = gamedata->player_angle - ray_angle;
+	if(ca < 0)
+	{
+		ray_angle += 2*PI;
+	}
+	if(ray_angle<2*PI)
+	{
+		ray_angle-=2*PI;
+	}
+	distT = distT*cos(ca);
+	int mapsize = gamedata->mapX * gamedata->mapY;
+	float WallHeight = (64 * 320) / distT;
+	if(WallHeight > 320)
+	{
+		WallHeight = 320;
+	}
+	float WallOffset = 160-WallHeight/2;
 	
-	// drawLine3d(gamedata,r*8+530,WallOffset,r*8+530,WallHeight+WallOffset,0x00FF0000);
+	drawLine3d(gamedata,r+530,WallOffset,r+530,WallHeight+WallOffset,0x00FF0000);
 	
-	ray_angle += Dgre;
+	ray_angle += Dgre/4;
 	if(ray_angle < 0)
 	{
 		ray_angle += 2*PI;
@@ -385,7 +385,7 @@ int main(int argc,char **argv)
     gamedata->mapX = get_line_len(gamedata);
     gamedata->mapY = get_height(gamedata);
     gamedata->mlx_window = mlx_new_window(gamedata->mlx,16*  gamedata->mapX, 16 * gamedata->mapY,"Hello World");
-	//gamedata->mlx_3dwindow = mlx_new_window(gamedata->mlx,1024, 512,"Hello World");
+	gamedata->mlx_3dwindow = mlx_new_window(gamedata->mlx,1024, 512,"Hello World");
     init(gamedata);
 	//mlx_new_image(gamedata->mlx,16*  gamedata->mapX, 16 * gamedata->mapY);
     drawMap(gamedata);
