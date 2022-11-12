@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/11/12 23:53:43 by calion           ###   ########.fr       */
+/*   Updated: 2022/11/13 00:00:07 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,15 +107,9 @@ void drawRays(t_gamedata *gamedata)
             x_offset = -(y_offset / aTan);
         }
 
-        if(ray_angle == 0 || ray_angle == PI || ray_angle == 2*PI || ray_angle == P2 || ray_angle == P3)
+        if(ray_angle == 0 || ray_angle == PI)
         {
             ray_x = gamedata->player_x;
-            ray_y = gamedata->player_y;
-            dof = gamedata->mapY;
-        }
-		if(ray_angle == PI /2)
-        {
-            ray_x = 0;
             ray_y = gamedata->player_y;
             dof = gamedata->mapY;
         }
@@ -128,7 +122,7 @@ void drawRays(t_gamedata *gamedata)
             //  printf("im map_Y : %d \n",map_y);
             // map_pos = map_y * gamedata->mapX + map_x;
 
-            if(map_x < gamedata->mapX && map_y < gamedata->mapY && map_x > 0 && map_y > 0 && gamedata->map_split[map_y][map_x] == '1')
+            if(map_x < gamedata->mapX && map_y < gamedata->mapY && map_x >= 0 && map_y >= 0 && gamedata->map_split[map_y][map_x] == '1')
             {
 				horiX = ray_x;
 				horiY = ray_y;
@@ -164,7 +158,7 @@ void drawRays(t_gamedata *gamedata)
             x_offset = 16;
             y_offset = -x_offset * nTan;
         }
-  		if(ray_angle == 0 || ray_angle == PI || ray_angle == 2*PI || ray_angle == P2 || ray_angle == P3)
+  		if(ray_angle == 0 || ray_angle == PI)
         {
             ray_x = gamedata->player_x;
             ray_y = gamedata->player_y;
@@ -180,7 +174,7 @@ void drawRays(t_gamedata *gamedata)
             //  printf("im map_Y : %d \n",map_y);
             // map_pos = map_y * gamedata->mapX + map_x;
 
-            if(map_x < gamedata->mapX && map_y < gamedata->mapY && map_x > 0 && map_y > 0 && gamedata->map_split[map_y][map_x] == '1')
+            if(map_x < gamedata->mapX && map_y < gamedata->mapY && map_x >= 0 && map_y >= 0 && gamedata->map_split[map_y][map_x] == '1')
             {
 				vertiX = ray_x;
 				vertiY = ray_y;
