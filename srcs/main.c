@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/11/10 22:34:13 by calion           ###   ########.fr       */
+/*   Updated: 2022/11/12 23:53:43 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,278 +29,72 @@ void drawLine(t_gamedata *gamedata, int beginX, int beginY,int endX,int endY,int
     double pixelY = beginY;
     while (pixels)
     {
-        mlx_pixel_put(gamedata->mlx, gamedata->mlx_window, pixelX, pixelY, color);
-        pixelX += deltaX;
-        pixelY += deltaY;
-        --pixels;
+		if(pixelX < gamedata->mapX * 16 && pixelY < gamedata->mapY*16 && pixelX>0 && pixelY>0)
+		{
+			mlx_pixel_put(gamedata->mlx, gamedata->mlx_window, pixelX, pixelY, color);
+			pixelX += deltaX;
+			pixelY += deltaY;
+		}
+		--pixels;
     }
 }
 
-// void drawRays(t_gamedata *gamedata)
+// void drawLine3d(t_gamedata *gamedata, int beginX, int beginY,int endX,int endY,int color)
 // {
-//     int r,map_x,map_y,map_pos,dof;
-//     float ray_x,ray_y,ray_angle,x_offset,y_offset;
-//     r = 0;
-//     ray_angle = gamedata->player_angle;
-//     //ray_x = ray_y / tan(ray_angle);
-//     //ray_y = ((map_height * 16) - player_y) / 16;
-//     while(r < 1)
+//     float deltaX = endX - beginX;
+//     float deltaY = endY - beginY;
+
+//     int pixels = sqrt((deltaX * deltaX) + (deltaY * deltaY));
+
+//     deltaX /= pixels; // 1
+//     deltaY /= pixels; // 0
+//     double pixelX = beginX;
+//     double pixelY = beginY;
+//     while (pixels)
 //     {
-//         dof = 0;
-//         //float aTan = -1/tan(ray_angle);
-//         if(ray_angle < PI && ray_angle >= PI/2 ) // looking up quadrant 2
-//         {
-//             ray_y = (int)(((gamedata->mapY * 16) - gamedata->player_y) / 16);
-//             ray_x = gamedata->player_x - (gamedata->player_y - ray_y) / tan(ray_angle);
-//             y_offset = -16;
-//             x_offset = (y_offset) / tan(ray_angle);
-//         }
-//         if(ray_angle > 0 && ray_angle < PI / 2) // looking up quadrant 1
-//         {
-//             ray_y = (int)(((gamedata->mapY * 16) - gamedata->player_y) / 16);
-//             ray_x = gamedata->player_x + (gamedata->player_y - ray_y) / tan(ray_angle);
-//             y_offset = -16;
-//             x_offset = -1 * ( y_offset / tan(ray_angle));
-//         }
-//         if(ray_angle > PI && ray_angle <= PI + PI/2) //looking down quadrant 3
-//         {
-//             ray_y = (int)((((gamedata->mapY * 16) - gamedata->player_y) / 16) + 16);
-//             ray_x = gamedata->player_x - ((ray_y - gamedata->player_y) / tan(ray_angle));
-//             y_offset = 16;
-//             x_offset = -1 * (y_offset / tan(ray_angle));
-//         }
-//         if(ray_angle > PI + PI / 2 && ray_angle < 2*PI) //looking down quadrant 4
-//         {
-//             ray_y = (int)(((gamedata->mapY * 16) - gamedata->player_y) / 16) + 16;
-//             ray_x = gamedata->player_x + ((ray_y - gamedata->player_y) / tan(ray_angle));
-//             y_offset = 16;
-//             x_offset = (y_offset / tan(ray_angle));
-//         }
-//         if(ray_angle == 0 || ray_angle == PI)
-//         {
-//             ray_x = gamedata->player_x;
-//             ray_y = gamedata->player_y;
-//             dof = gamedata->mapY;
-//         }
-//         // while(dof < gamedata->mapY)
-//         // {
-//             /*find position in array*/
-//             //  map_x = (int)(ray_x) / 16;
-//             //  map_y = (int)(ray_y) / 16;
-//             // if(map_x < gamedata->mapX && map_y < gamedata->mapY && gamedata->map_split[map_y][map_x] == 1)
-//             // {
-//             //     dof = gamedata->mapY;
-//             // }
-//             // else
-//             // {
-//             //     ray_x += x_offset;
-//                 // ray_y += y_offset;
-//                 // dof += 1;
-//             // }
-//         // }
-
-//         drawLine(gamedata,gamedata->player_x + 2,gamedata->player_y+2,
-//         ray_x,ray_y,0x0000FF00);
-
-//         r++;
+		
+// 		mlx_pixel_put(gamedata->mlx, gamedata->mlx_3dwindow, pixelX, pixelY, color);
+// 		pixelX += deltaX;
+// 		pixelY += deltaY;
+// 		--pixels;
 //     }
-
 // }
 
-// void drawRays(t_gamedata *gamedata)
-// {
-//     int r,map_x,map_y,map_pos,dof;
-//     float ray_x,ray_y,ray_angle,x_offset,y_offset;
-//     r = 0;
-//     ray_angle = gamedata->player_angle;
-//     //ray_x = ray_y / tan(ray_angle);
-//     //ray_y = ((map_height * 16) - player_y) / 16;
-//     //S(int)playery
-//     while(r < 1)
-//     {
-//         dof = 0;
-//         //float aTan = -1/tan(ray_angle);
-//         if(ray_angle < (PI - PI/2) && ray_angle > 0 ) // looking up quadrant 1
-//         {
-//             ray_y = (int)((gamedata->mapY * 16) - gamedata->player_y);
-//             ray_x = gamedata->player_x + ((gamedata->player_y - ray_y) / tan(ray_angle));
-//             y_offset = -16;
-//             x_offset = (y_offset) / tan(ray_angle);
-//         }
-//         if(ray_angle >= PI - PI/2 && ray_angle < PI) // looking up quadrant 2
-//         {
-//             ray_y = (int)((gamedata->mapY  * 16) - gamedata->player_y);
-//             ray_x = gamedata->player_x - ((gamedata->player_y - ray_y) / tan(ray_angle));
-//             y_offset = -16;
-//             x_offset = -1 * (-1 * y_offset) / tan(ray_angle);
-//         }
-//         if(ray_angle > PI && ray_angle <= PI + PI / 2) //looking down quadrant 3
-//         {
-//             ray_y = (int)((gamedata->mapY  * 16) - gamedata->player_y) + 16;
-//             ray_x = gamedata->player_x - (tan(ray_angle) * (ray_y - gamedata->player_y));
-//             y_offset = 16;
-//             x_offset = ((-1 * y_offset) / tan(ray_angle));
-//         }
-//         if(ray_angle < (PI + PI / 2) && ray_angle < (2 * PI)) //looking down quadrant 4
-//         {
-//             ray_y = (int)((gamedata->mapY  * 16) - gamedata->player_y) + 16;
-//             ray_x = gamedata->player_x + (tan(ray_angle) * (ray_y - gamedata->player_y));
-//             y_offset = 16;
-//             x_offset = (y_offset / tan(ray_angle));
-//         }
-//         if(ray_angle == 0 || ray_angle == PI)
-//         {
-//             ray_x = gamedata->player_x;
-//             ray_y = gamedata->player_y;
-//             dof = gamedata->mapY;
-//         }
-//         while(dof < gamedata->mapY)
-//         {
-//             /*find position in array*/
-//              map_x = (int)(ray_x) / 16;
-//              map_y = (int)(ray_y) / 16;
-//             if(map_x < gamedata->mapX && map_y < gamedata->mapY && gamedata->map_split[map_y][map_x] == '1')
-//             {
-//                 dof = gamedata->mapY;
-//             }
-//             else
-//             {
-//                 ray_x += x_offset;
-//                 ray_y += y_offset;
-//                 dof += 1;
-//             }
-//        }
-
-//         drawLine(gamedata,gamedata->player_x + 2,gamedata->player_y+2,
-//         ray_x,ray_y,0x0000FF00);
-
-//         r++;
-//     }
-
-// }
-
-// void drawRays(t_gamedata *gamedata)
-// {
-//     int r,map_x,map_y,map_pos,dof;
-//     float ray_x,ray_y,ray_angle,x_offset,y_offset;
-//     //ray_x = ray_y / tan(ray_angle);
-//     //ray_y = ((map_height * 16) - player_y) / 16;
-//     //S(int)playery
-//     /*Horizontal Line check*/
-//     r = 0;
-//     ray_angle = gamedata->player_angle;
-//     while(r < 1)
-//     {
-//         dof = 0;
-//         float aTan = -1/tan(ray_angle);
-   
-//         if(ray_angle < PI) // looking up quadrant 2
-//         {
-//             ray_y = (((int)gamedata->player_y>>4)<<4)-0.0001;
-//             ray_x = (gamedata->player_y - ray_y) * aTan + gamedata->player_x;
-//             y_offset = -16;
-//             x_offset = -y_offset * aTan;
-//         }
-//         if(ray_angle > PI) //looking down quadrant 3
-//         {
-//             ray_y = (((int)gamedata->player_y>>4)<<4)+16;
-//             ray_x = (gamedata->player_y - ray_y) * aTan + gamedata->player_x;
-//             y_offset = 16;
-//             x_offset = -y_offset * aTan;
-//         }
-
-//         if(ray_angle == 0 || ray_angle == PI)
-//         {
-//             ray_x = gamedata->player_x;
-//             ray_y = gamedata->player_y;
-//             dof = gamedata->mapY;
-//         }
-//         while(dof < gamedata->mapY)
-//         {
-//             /*find position in array*/
-//              map_x = (int)(ray_x) >> 4;
-//              map_y = (int)(ray_y) >> 4;
-//             // map_pos = map_y * gamedata->mapX + map_x;
-
-//             if(map_x < gamedata->mapX && map_y < gamedata->mapY && gamedata->map_split[map_y][map_x] == '1')
-//             {
-//                 dof = gamedata->mapY;
-//             }
-//             else
-//             {
-//                 ray_x += x_offset;
-//                 ray_y += y_offset;
-//                 dof += 1;
-//             }
-//        }
-
-//         drawLine(gamedata,gamedata->player_x + 2,gamedata->player_y+2,
-//         ray_x,ray_y,0x0000FF00);
-
-//     /*Vertical Line check*/
-//     //     dof = 0;
-//     //     float nTan = -tan(ray_angle);
-//     //     if(ray_angle > P2 && ray_angle < P3) // looking left
-//     //     {
-//     //         ray_x = (((int)gamedata->player_x>>4)<<4)-0.0001;
-//     //         ray_y = (gamedata->player_x - ray_x) * nTan + gamedata->player_y;
-//     //         x_offset = -16;
-//     //         y_offset = -x_offset * nTan;
-//     //     }
-//     //     if(ray_angle < P2 || ray_angle > P3) //looking right
-//     //     {
-//     //         ray_x = (((int)gamedata->player_x>>4)<<4)+16;
-//     //         ray_y = (gamedata->player_x - ray_x) * nTan + gamedata->player_y;
-//     //         x_offset = 16;
-//     //         y_offset = -x_offset * nTan;
-//     //     }
-//     //     if(ray_angle == 0 || ray_angle == PI)
-//     //     {
-//     //         ray_x = gamedata->player_x;
-//     //         ray_y = gamedata->player_y;
-//     //         dof = gamedata->mapY;
-//     //     }
-//     //     while(dof < gamedata->mapY)
-//     //     {
-//     //         /*find position in array*/
-//     //          map_x = (int)(ray_x) >> 4;
-//     //          map_y = (int)(ray_y) >> 4;
-//     //         // map_pos = map_y * gamedata->mapX + map_x;
-
-//     //         if(map_x < gamedata->mapY && map_y < gamedata->mapY && gamedata->map_split[map_y][map_x] == '1')
-//     //         {
-//     //             dof = gamedata->mapY;
-//     //         }
-//     //         else
-//     //         {
-//     //             ray_x += x_offset;
-//     //             ray_y += y_offset;
-//     //             dof += 1;
-//     //         }
-//     //    }
-//     //     drawLine(gamedata,gamedata->player_x + 2,gamedata->player_y+2,
-//     //     ray_x,ray_y,0x00FF0000);
-//         r++;
-// 	}
-// }
+float dist(float beginX,float beginY,float endX,float endY,float angle)
+{
+	float deltaX = endX - beginX;
+    float deltaY = endY - beginY;
+	return sqrt((deltaX  * deltaX) + (deltaY * deltaY));
+}
 
 void drawRays(t_gamedata *gamedata)
 {
     int r,map_x,map_y,map_pos,dof;
-    float ray_x,ray_y,ray_angle,x_offset,y_offset;
+    float ray_x,ray_y,ray_angle,x_offset,y_offset,distT;
     //ray_x = ray_y / tan(ray_angle);
     //ray_y = ((map_height * 16) - player_y) / 16;
     //S(int)playery
-    /*Horizontal Line check*/
+	//mlx_clear_window(gamedata->mlx,gamedata->mlx_3dwindow);
     r = 0;
-    ray_angle = gamedata->player_angle;
-    printf("im rayangle: %f\n",ray_angle);
-  
-         dof = 0;
-         float aTan = tan(ray_angle);
+    ray_angle = gamedata->player_angle - Dgre*30;
+	if(ray_angle <0)
+	{
+		ray_angle += 2*PI;
+	}
+	if(ray_angle > 2*PI)
+	{
+		ray_angle -= 2*PI;
+	}
+	while(r<60)
+	{
+        dof = 0;
+		/*find shortest line*/
+		float distHori = 1000000,horiX= gamedata->player_x,horiY = gamedata->player_y;
+   		/*Horizontal Line check*/
+        float aTan = tan(ray_angle);
         if(ray_angle < PI) // looking up quadrant 2
         {
-           ray_y = ((int)(gamedata->player_y / 16) * 16) - 0.000001;
+           ray_y = ((int)(gamedata->player_y / 16) * 16) - 0.0001 ;
            ray_x = ((gamedata->player_y - ray_y) / aTan) + gamedata->player_x;
            y_offset = -16;
            x_offset = -(y_offset / aTan);
@@ -313,12 +107,70 @@ void drawRays(t_gamedata *gamedata)
             x_offset = -(y_offset / aTan);
         }
 
-          if(ray_angle == PI || ray_angle == 0 || ray_angle == 2*PI)
+        if(ray_angle == 0 || ray_angle == PI || ray_angle == 2*PI || ray_angle == P2 || ray_angle == P3)
         {
             ray_x = gamedata->player_x;
             ray_y = gamedata->player_y;
             dof = gamedata->mapY;
         }
+		if(ray_angle == PI /2)
+        {
+            ray_x = 0;
+            ray_y = gamedata->player_y;
+            dof = gamedata->mapY;
+        }
+        while(dof < gamedata->mapY)
+        {
+            /*find position in array*/
+             map_x = ((int)(ray_x) / 16);
+             map_y = ((int)(ray_y) / 16);
+            //  printf("im map_X : %d \n",map_x);
+            //  printf("im map_Y : %d \n",map_y);
+            // map_pos = map_y * gamedata->mapX + map_x;
+
+            if(map_x < gamedata->mapX && map_y < gamedata->mapY && map_x > 0 && map_y > 0 && gamedata->map_split[map_y][map_x] == '1')
+            {
+				horiX = ray_x;
+				horiY = ray_y;
+				distHori = dist(gamedata->player_x,gamedata->player_y,horiX,horiY,ray_angle);
+                dof = gamedata->mapY;
+            }
+            else
+            {
+                ray_x += x_offset;
+                ray_y += y_offset;
+            	dof += 1;
+            }
+       }
+	//    drawLine(gamedata,gamedata->player_x + 2,gamedata->player_y+2,
+    //    ray_x ,ray_y,0x0000FF00);
+
+    /*Vertical Line check*/
+    
+        dof = 0;
+		float distVerti= 1000000,vertiX= gamedata->player_x,vertiY = gamedata->player_y;
+        float nTan = tan(ray_angle);
+        if(ray_angle > P2 && ray_angle < P3) // looking left
+        {
+            ray_x = (((int)gamedata->player_x/16) * 16) - 0.0001;
+            ray_y = (gamedata->player_x - ray_x) * nTan + gamedata->player_y;
+            x_offset = -16;
+            y_offset = -x_offset * nTan;
+        }
+        if(ray_angle < P2 || ray_angle > P3) //looking right
+        {
+            ray_x = (((int)gamedata->player_x / 16) * 16)+16;
+            ray_y = (gamedata->player_x - ray_x) * nTan + gamedata->player_y;
+            x_offset = 16;
+            y_offset = -x_offset * nTan;
+        }
+  		if(ray_angle == 0 || ray_angle == PI || ray_angle == 2*PI || ray_angle == P2 || ray_angle == P3)
+        {
+            ray_x = gamedata->player_x;
+            ray_y = gamedata->player_y;
+            dof = gamedata->mapY;
+        }
+
         while(dof < gamedata->mapY)
         {
             /*find position in array*/
@@ -328,69 +180,67 @@ void drawRays(t_gamedata *gamedata)
             //  printf("im map_Y : %d \n",map_y);
             // map_pos = map_y * gamedata->mapX + map_x;
 
-            if(map_x < gamedata->mapX && map_y < gamedata->mapY && gamedata->map_split[map_y][map_x] == '1')
+            if(map_x < gamedata->mapX && map_y < gamedata->mapY && map_x > 0 && map_y > 0 && gamedata->map_split[map_y][map_x] == '1')
             {
-                dof = gamedata->mapY;
+				vertiX = ray_x;
+				vertiY = ray_y;
+				distVerti = dist(gamedata->player_x,gamedata->player_y,vertiX,vertiY,ray_angle);
+				dof = gamedata->mapY;
             }
-            else
+            else 
             {
                 ray_x += x_offset;
                 ray_y += y_offset;
-                dof += 1;
+            	dof += 1;
             }
        }
+		if(distVerti < distHori)
+		{
+			ray_x = vertiX;
+			ray_y = vertiY;
+			distT = distVerti; 
+		}
+		if(distHori < distVerti)
+		{
+			ray_x = horiX;
+			ray_y = horiY;
+			distT = distHori;
+		}
         drawLine(gamedata,gamedata->player_x + 2,gamedata->player_y+2,
         ray_x ,ray_y,0x0000FF00);
 
-    /*Vertical Line check*/
-    
-    //      dof = 0;
-    //     aTan = tan(ray_angle);
-    //     if((ray_angle > (PI / 2) && ray_angle < (3*PI/2)) && ray_angle != PI) //looking down quadrant 3
-    //     {
-    //         ray_x = ((int)(gamedata->player_x / 16) * 16) - 0.000001;
-    //         ray_y = ((gamedata->player_x - ray_x) / aTan) + gamedata->player_y;
-    //         x_offset = -16;
-    //         y_offset = -(x_offset / aTan);
-    //     }
-    //     if(((ray_angle < (PI/2) || ray_angle > (3*PI/2)) && ray_angle != 0 && ray_angle != 2*PI)) // looking up quadrant 2
-    //     {
-    //        ray_x = ((int)(gamedata->player_x / 16) * 16 ) + 16;
-    //        ray_y = ((gamedata->player_x - ray_x) / aTan) + gamedata->player_y;
-    //        x_offset = 16;
-    //        y_offset = -(x_offset / aTan);
-    //     }
-
-    //     if(ray_angle == PI || ray_angle == 0 || ray_angle == 2*PI)
-    //     {
-    //         ray_x = gamedata->player_x;
-    //         ray_y = gamedata->player_y;
-    //         dof = gamedata->mapX;
-    //     }
-    //     while(dof < gamedata->mapX)
-    //     {
-    //         /*find position in array*/
-    //          map_x = (int)(ray_x) / 16;
-    //          map_y = (int)(ray_y) / 16;
-    //         //  printf("im map_X : %d \n",map_x);
-    //         //  printf("im map_Y : %d \n",map_y);
-    //         // map_pos = map_y * gamedata->mapX + map_x;
-
-    //         if(map_x < gamedata->mapX && map_y < gamedata->mapY && gamedata->map_split[map_y][map_x] == '1')
-    //         {
-    //             dof = gamedata->mapX;
-    //         }
-    //         else
-    //         {
-    //             ray_x += x_offset;
-    //             ray_y += y_offset;
-    //             dof += 1;
-    //         }
-    //    }
-
-    //     drawLine(gamedata,gamedata->player_x + 2,gamedata->player_y+2,
-    //     ray_x ,ray_y,0x00FFFF00);
-        
+	/*3d SCENE*/
+	// float ca = gamedata->player_angle - ray_angle;
+	// if(ca < 0)
+	// {
+	// 	ray_angle += 2*PI;
+	// }
+	// if(ray_angle<2*PI)
+	// {
+	// 	ray_angle-=2*PI;
+	// }
+	// distT = distT*cos(ca);
+	// int mapsize = gamedata->mapX * gamedata->mapY;
+	// float WallHeight = (64 * 320) / distT;
+	// if(WallHeight > 320)
+	// {
+	// 	WallHeight = 320;
+	// }
+	// float WallOffset = 160-WallHeight/2;
+	
+	// drawLine3d(gamedata,r*8+530,WallOffset,r*8+530,WallHeight+WallOffset,0x00FF0000);
+	
+	ray_angle += Dgre;
+	if(ray_angle < 0)
+	{
+		ray_angle += 2*PI;
+	}
+	if(ray_angle > 2*PI)
+	{
+		ray_angle -= 2*PI;
+	}
+	r++;
+	}
 }
 
 
@@ -501,7 +351,7 @@ void drawMap2(t_gamedata *call_map)
     int y = 0;
     
     i = 0;
-    drawWall(call_map,x,y);
+    //drawWall(call_map,x,y);
     while(call_map->map_split[i] != NULL)
     {
         j = 0;
@@ -541,8 +391,9 @@ int main(int argc,char **argv)
     gamedata->mapX = get_line_len(gamedata);
     gamedata->mapY = get_height(gamedata);
     gamedata->mlx_window = mlx_new_window(gamedata->mlx,16*  gamedata->mapX, 16 * gamedata->mapY,"Hello World");
+	//gamedata->mlx_3dwindow = mlx_new_window(gamedata->mlx,1024, 512,"Hello World");
     init(gamedata);
-	mlx_new_image(gamedata->mlx,16*  gamedata->mapX, 16 * gamedata->mapY);
+	//mlx_new_image(gamedata->mlx,16*  gamedata->mapX, 16 * gamedata->mapY);
     drawMap(gamedata);
     mlx_hook(gamedata->mlx_window, 2, 1L << 0, key_event, gamedata);
 	//mlx_hook(gamedata.mlx_window, 17, 1L << 17, exit_game, &gamedata);

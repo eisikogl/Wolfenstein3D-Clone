@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:56:45 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/11/08 17:01:07 by calion           ###   ########.fr       */
+/*   Updated: 2022/11/12 21:02:31 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@
 #include "../includes/get_next_line.h"
 #define PI 3.14159265359 
 #define P2 PI/2
-#define P3 3*PI/2
+#define P3 3*(PI/2)
+#define Dgre 0.0174533 // one dgree in radians
 
 typedef struct s_gamedata
 {
@@ -35,6 +36,7 @@ typedef struct s_gamedata
     void *mlx_window;
     void *img_player;
     void *img_wall;
+    void *mlx_3dwindow;
 
     float  player_x;
     float  player_y;

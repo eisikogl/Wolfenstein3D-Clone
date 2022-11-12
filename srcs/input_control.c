@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/11/10 22:34:07 by calion           ###   ########.fr       */
+/*   Updated: 2022/11/12 23:34:32 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,10 @@ int key_event(int key, t_gamedata *gamedata)
     }	
     if (key == 65361) //linux:65361 leftarrow
 	{
-        gamedata->player_angle += 0.1;
+        gamedata->player_angle += PI/100;
         if(gamedata->player_angle > 2 * PI)
 		{
-			gamedata->player_angle = 0;
+			gamedata->player_angle -= 2*PI;
 		}
 			gamedata->player_dx = cos(gamedata->player_angle) * 5;
 			gamedata->player_dy = sin(gamedata->player_angle) * 5;
@@ -108,7 +108,7 @@ int key_event(int key, t_gamedata *gamedata)
     }
 	if (key == 65363) //linux:65363 rightarrow
 	{
-            gamedata->player_angle -= 0.1;
+            gamedata->player_angle -= PI/100;
 	    if(gamedata->player_angle < 0)
         {
             gamedata->player_angle += 2 * PI;
