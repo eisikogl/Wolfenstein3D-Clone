@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/11/13 00:16:41 by calion           ###   ########.fr       */
+/*   Updated: 2022/11/13 05:00:32 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,28 @@ float dist(float beginX,float beginY,float endX,float endY,float angle)
 	return sqrt((deltaX  * deltaX) + (deltaY * deltaY));
 }
 
+void DrawCube(t_gamedata *gamedata,float beginX,float beginY,float endX,float endY,int cubeWidth)
+{    
+    int rectheigt = 5;
+    int rectwidth = 5; // odd numbers so arm is in middle;
+    int j;
+    int i = 0;
+    /*player rectangle*/
+    while (i < endY)
+	{
+		j = 0;
+		while (j < endX + cubeWidth)
+        {
+			mlx_pixel_put(gamedata->mlx, gamedata->mlx_3dwindow, beginX + j, beginY + i, 0xFFFFFF00);
+            j++;
+        }
+		++i;
+	}
+   
+}
+
+
+
 void drawRays(t_gamedata *gamedata)
 {
     int r,map_x,map_y,map_pos,dof;
@@ -76,7 +98,7 @@ void drawRays(t_gamedata *gamedata)
     //S(int)playery
 	mlx_clear_window(gamedata->mlx,gamedata->mlx_3dwindow);
     r = 0;
-    ray_angle = gamedata->player_angle - Dgre*30;
+    ray_angle = gamedata->player_angle - Dgre*30 ;
 	if(ray_angle <0)
 	{
 		ray_angle += 2*PI;
@@ -85,7 +107,8 @@ void drawRays(t_gamedata *gamedata)
 	{
 		ray_angle -= 2*PI;
 	}
-	while(r<240)
+    int raysize = 16 * 60;
+	while(r<raysize)
 	{
         dof = 0;
 		/*find shortest line*/
@@ -217,17 +240,19 @@ void drawRays(t_gamedata *gamedata)
 		ray_angle-=2*PI;
 	}
 	distT = distT*cos(ca);
-	int mapsize = gamedata->mapX * gamedata->mapY;
-	float WallHeight = (64 * 320) / distT;
-	if(WallHeight > 320)
+	int mapsize = gamedata->mapY * gamedata->mapY;
+	float lineHeight = (16 * 512) / distT;
+	if(lineHeight > 512)
 	{
-		WallHeight = 320;
+		lineHeight = 512;
 	}
-	float WallOffset = 160-WallHeight/2;
+	float WallOffsetY = 256-lineHeight/2;
+	float WallOffsetX = 1024/2;
+    float sceensize = 1024 / raysize;
+  //  DrawCube(gamedata,r*4,WallOffsetY,r*4,lineHeight+WallOffsetY,4);
+	drawLine3d(gamedata,r,WallOffsetY,r*sceensize,lineHeight+WallOffsetY,color);
 	
-	drawLine3d(gamedata,r+530,WallOffset,r+530,WallHeight+WallOffset,color);
-	
-	ray_angle += Dgre/4;
+	ray_angle += Dgre/16;
 	if(ray_angle < 0)
 	{
 		ray_angle += 2*PI;
