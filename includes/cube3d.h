@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:56:45 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/11/12 21:02:31 by calion           ###   ########.fr       */
+/*   Updated: 2022/11/14 22:59:31 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,25 @@ typedef struct s_gamedata
 
     int *floor_color;
     int *ceiling_color;
+
+    
+    void	*img2d;
+    char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+    
+    void	*img3dwin;
+    char	*addr3d;
+	int		bits_per_pixel3d;
+	int		line_length3d;
+	int		endian3d;
+
+    int window_height;
+    int window_width;
+
+    int trgb_floor;
+    int trgb_ceiling;
 }t_gamedata;
 
 /*input_control*/
