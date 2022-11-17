@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:56:45 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/11/14 22:59:31 by calion           ###   ########.fr       */
+/*   Updated: 2022/11/17 06:39:41 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,12 @@ typedef struct s_gamedata
 
     int trgb_floor;
     int trgb_ceiling;
+
+    void    *north_texture;
+    char    *north_addr;
+    int     north_bits_per_pixel;
+    int     north_line_length;
+    int     north_endian;
 }t_gamedata;
 
 /*input_control*/

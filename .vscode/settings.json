@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "cube3d.h": "c",
-        "mlx.h": "c"
+        "mlx.h": "c",
+        "*.ppm": "c"
     }
 }
