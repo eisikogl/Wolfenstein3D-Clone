@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:19:54 by calion            #+#    #+#             */
-/*   Updated: 2022/11/08 03:29:31 by calion           ###   ########.fr       */
+/*   Updated: 2022/12/16 22:04:29 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ void read_map(t_gamedata *call_map)
                 end = i;
                 number = ft_substr(line,start,end-start);
                 numberato = ft_atoi(number);
+                free(number);
                 call_map->floor_color[j] = numberato;
                 j++;
             }
+            
             
         }
         else if(!ft_strncmp(line,"C",1))
@@ -86,20 +88,24 @@ void read_map(t_gamedata *call_map)
                 end = i;
                 number = ft_substr(line,start,end-start);
                 numberato = ft_atoi(number);
+                free(number);
                 call_map->ceiling_color[j] = numberato;
                 j++;
             }
+            
         }
         else if(ft_strchr(line,'1'))
         {
             while(line)
             {
                 call_map->map = ft_strjoin(call_map->map,line);
+                free(line);
                 line = get_next_line(fd);
             }
         }
         line = get_next_line(fd);
     }
+    free(line);
     close(fd);
 }
 
