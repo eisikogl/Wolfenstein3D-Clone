@@ -6,7 +6,7 @@
 /*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:56:45 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/11/17 06:39:41 by calion           ###   ########.fr       */
+/*   Updated: 2022/12/16 23:16:54 by calion           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,22 +85,44 @@ typedef struct s_gamedata
     int     north_endian;
 }t_gamedata;
 
+
+
 /*input_control*/
-int key_event(int key, t_gamedata *gamedata);
+int		key_event(int key, t_gamedata *gamedata);
 
 /*read_map*/
-void read_map(t_gamedata *call_map);
+void	read_map(t_gamedata *call_map);
 
-/*exit_game*/
-int	exit_game(t_gamedata *gamedata);
+/*Pixel drawing functions*/
+void	my_mlx_pixel_put(t_gamedata *gamedata, int x, int y, int color);
+void	my_mlx_pixel_put3d(t_gamedata *gamedata, int x, int y, int color);
 
-/*controlls*/
+/*Line drawing functions*/
+void	drawLine(t_gamedata *gamedata, int beginX, int beginY,int endX,int endY,int color);
+void	drawLine3d(t_gamedata *gamedata, int beginX, int beginY,int endX,int endY,int color);
+void	drawLine3d_texture(t_gamedata *gamedata, float beginX, float beginY,float shade,float texture_x,float lineHeight);
+
+/*Color manipulation functions*/
+int		create_trgb(int t, int r, int g, int b);
+
+/*Rendering functions*/
+int		render_rect(t_gamedata *gamedata,int x,int y);
+void	DrawCube(t_gamedata *gamedata,float beginX,float beginY,float endX,float endY,int color,int cubewith);
+void	render_floor(t_gamedata *gamedata, int color);
+void	render_ceiling(t_gamedata *gamedata, int color);
+void	render_bg_map(t_gamedata *gamedata, int color);
+void	pixelPlayer(t_gamedata *gamedata);
+
+/*Map drawing and initialization functions*/
+void	drawMap(t_gamedata *call_map);
+void	drawMap2(t_gamedata *call_map);
+void	init_textures(t_gamedata *gamedata);
+
+/*Ray casting functions*/
+float	dist(float beginX,float beginY,float endX,float endY,float angle);
+void	drawRays(t_gamedata *gamedata);
+
+/*helper functions*/
 int get_line_len(t_gamedata *call_map);
 int get_height(t_gamedata *call_map);
-void drawPlayer(t_gamedata *gamedata);
-void drawWall(t_gamedata *gamedata,int i,int j);
-void init(t_gamedata *gamedata);
-void pixelPlayer(t_gamedata *gamedata);
-void drawMap2(t_gamedata *call_map);
-
 #endif
