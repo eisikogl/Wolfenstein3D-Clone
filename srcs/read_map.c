@@ -19,10 +19,10 @@ void	read_map(t_gamedata *call_map)
 	char	*line;
 	char	*parsed_line;
 
+	fd = open(call_map->map_path, O_RDONLY);
+	line = get_next_line(fd);
 	call_map->floor_color = malloc(sizeof(int) * 3);
 	call_map->ceiling_color = malloc(sizeof(int) * 3);
-	line = get_next_line(fd);
-	fd = open(call_map->map_path, O_RDONLY);
 	while (line)
 	{
 		if (!ft_strncmp(line, "NO", 2))

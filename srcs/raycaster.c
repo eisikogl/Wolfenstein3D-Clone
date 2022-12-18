@@ -26,32 +26,30 @@ void	drawRays(t_gamedata *gamedata)
 {
     int r,map_x,map_y,map_pos,dof;
     float ray_x,ray_y,ray_angle,x_offset,y_offset,distT;
-    //ray_x = ray_y / tan(ray_angle);
-    //ray_y = ((map_height * 16) - player_y) / 16;
-    //S(int)playery
-	mlx_clear_window(gamedata->mlx,gamedata->mlx_3dwindow);
-    float texture_y=0;
+
+	mlx_clear_window(gamedata->mlx, gamedata->mlx_3dwindow);
+    float texture_y = 0;
     r = 0;
-    ray_angle = gamedata->player_angle - Dgre*30 ;
-	if(ray_angle <0)
+    ray_angle = gamedata->player_angle - Dgre * 30 ;
+	if (ray_angle < 0)
 	{
-		ray_angle += 2*PI;
+		ray_angle += 2 * PI;
 	}
-	if(ray_angle > 2*PI)
+	if (ray_angle > 2 * PI)
 	{
-		ray_angle -= 2*PI;
+		ray_angle -= 2 * PI;
 	}
     int raysize = 8192;
-	while(r<raysize)
+	while (r < raysize)
 	{
         dof = 0;
 		/*find shortest line*/
-		float distHori = 1000000,horiX= gamedata->player_x,horiY = gamedata->player_y;
+        float distHori = 1000000,horiX= gamedata->player_x,horiY = gamedata->player_y;
    		/*Horizontal Line check*/
         float aTan = tan(ray_angle);
-        if(ray_angle < PI) // looking up quadrant 2
+        if (ray_angle < PI) // looking up quadrant 2
         {
-           ray_y = ((int)(gamedata->player_y / 16) * 16) - 0.0001 ;
+            ray_y = ((int)(gamedata->player_y / 16) * 16) - 0.0001 ;
            ray_x = ((gamedata->player_y - ray_y) / aTan) + gamedata->player_x;
            y_offset = -16;
            x_offset = -(y_offset / aTan);
@@ -64,13 +62,13 @@ void	drawRays(t_gamedata *gamedata)
             x_offset = -(y_offset / aTan);
         }
 
-        if(ray_angle == 0 || ray_angle == PI )
+        if (ray_angle == 0 || ray_angle == PI )
         {
             ray_x = gamedata->player_x;
             ray_y = gamedata->player_y;
             dof = gamedata->mapY;
         }
-        while(dof < gamedata->mapY)
+        while (dof < gamedata->mapY)
         {
             /*find position in array*/
              map_x = ((int)(ray_x) / 16);
@@ -79,11 +77,11 @@ void	drawRays(t_gamedata *gamedata)
             //  printf("im map_Y : %d \n",map_y);
             // map_pos = map_y * gamedata->mapX + map_x;
 
-            if(map_x < gamedata->mapX && map_y < gamedata->mapY && map_x >= 0 && map_y >= 0 && gamedata->map_split[map_y][map_x] == '1')
+            if (map_x < gamedata->mapX && map_y < gamedata->mapY && map_x >= 0 && map_y >= 0 && gamedata->map_split[map_y][map_x] == '1')
             {
 				horiX = ray_x;
 				horiY = ray_y;
-				distHori = dist(gamedata->player_x,gamedata->player_y,horiX,horiY,ray_angle);
+				distHori = dist(gamedata->player_x, gamedata->player_y, horiX, horiY, ray_angle);
                 dof = gamedata->mapY;
             }
             else

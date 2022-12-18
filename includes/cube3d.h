@@ -10,119 +10,128 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE3D_H
-#define CUBE3D_H
+# ifndef CUBE3D_H
+# define CUBE3D_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
-#include <math.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+# include <math.h>
+# include "../libs/mlx/mlx.h"
+# include "../libs/Libft/libft.h"
+# include "../includes/get_next_line.h"
 
-#include "../libs/mlx/mlx.h"
-#include "../libs/Libft/libft.h"
-
-#include "../includes/get_next_line.h"
-#define PI 3.14159265359 
-#define P2 PI/2
-#define P3 3*(PI/2)
-#define Dgre 0.0174533 // one dgree in radians
+# define PI 3.14159265359 
+# define P2 PI/2
+# define P3 3*(PI/2)
+# define Dgre 0.0174533
 
 typedef struct s_gamedata
 {
-    void *mlx;
-    void *mlx_window;
-    void *img_player;
-    void *img_wall;
-    void *mlx_3dwindow;
+	void	*mlx;
+	void	*mlx_window;
+	void	*img_player;
+	void	*img_wall;
+	void	*mlx_3dwindow;
 
-    float  player_x;
-    float  player_y;
+	float	player_x;
+	float	player_y;
 
-    float player_dy;
-    float player_dx;
-    float player_angle;
+	float	player_dy;
+	float	player_dx;
+	float	player_angle;
 
-    int	mapX;
-	int mapY;
-    char *map_path;
-    char *map;
-    char **map_split;
+	int		mapX;
+	int		mapY;
+	char	*map_path;
+	char	*map;
+	char	**map_split;
 
-    char *north_texture_path;
-    char *south_texture_path;
-    char *west_texture_path;
-    char *east_texture_path;
+	char	*north_texture_path;
+	char	*south_texture_path;
+	char	*west_texture_path;
+	char	*east_texture_path;
 
-    int *floor_color;
-    int *ceiling_color;
+	int		*floor_color;
+	int		*ceiling_color;
 
-    
-    void	*img2d;
-    char	*addr;
+
+	void	*img2d;
+	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-    
-    void	*img3dwin;
-    char	*addr3d;
+
+	void	*img3dwin;
+	char	*addr3d;
 	int		bits_per_pixel3d;
 	int		line_length3d;
 	int		endian3d;
 
-    int window_height;
-    int window_width;
+	int		window_height;
+	int		window_width;
 
-    int trgb_floor;
-    int trgb_ceiling;
+	int		trgb_floor;
+	int		trgb_ceiling;
 
-    void    *north_texture;
-    char    *north_addr;
-    int     north_bits_per_pixel;
-    int     north_line_length;
-    int     north_endian;
+	void	*north_texture;
+	char	*north_addr;
+	int		north_bits_per_pixel;
+	int		north_line_length;
+	int		north_endian;
 }t_gamedata;
 
 
 
-/*input_control*/
-int		key_event(int key, t_gamedata *gamedata);
 
 /*read_map*/
 void	read_map(t_gamedata *call_map);
+
+/*helper functions*/
+int		get_line_len(t_gamedata *call_map);
+int		get_height(t_gamedata *call_map);
 
 /*Pixel drawing functions*/
 void	my_mlx_pixel_put(t_gamedata *gamedata, int x, int y, int color);
 void	my_mlx_pixel_put3d(t_gamedata *gamedata, int x, int y, int color);
 
-/*Line drawing functions*/
-void	drawLine(t_gamedata *gamedata, int beginX, int beginY,int endX,int endY,int color);
-void	drawLine3d(t_gamedata *gamedata, int beginX, int beginY,int endX,int endY,int color);
-void	drawLine3d_texture(t_gamedata *gamedata, float beginX, float beginY,float shade,float texture_x,float lineHeight);
-
 /*Color manipulation functions*/
 int		create_trgb(int t, int r, int g, int b);
 
-/*Rendering functions*/
-int		render_rect(t_gamedata *gamedata,int x,int y);
-void	DrawCube(t_gamedata *gamedata,float beginX,float beginY,float endX,float endY,int color,int cubewith);
-void	render_floor(t_gamedata *gamedata, int color);
-void	render_ceiling(t_gamedata *gamedata, int color);
-void	render_bg_map(t_gamedata *gamedata, int color);
-void	pixelPlayer(t_gamedata *gamedata);
-
-/*Map drawing and initialization functions*/
-void	drawMap(t_gamedata *call_map);
-void	drawMap2(t_gamedata *call_map);
-void	init_textures(t_gamedata *gamedata);
+/*Line drawing functions*/
+void	drawLine(t_gamedata *gamedata, int begx, int begy,int endx,int endy,int color);
+void	drawLine3d(t_gamedata *gamedata, int begx, int begy,int endx,int endy,int color);
+void 	drawLine3d_texture(t_gamedata *gamedata, float begx, float begy,float shade,float texture_x,float lineHeight);
 
 /*Ray casting functions*/
 float	dist(float beginX,float beginY,float endX,float endY,float angle);
 void	drawRays(t_gamedata *gamedata);
 
-/*helper functions*/
-int get_line_len(t_gamedata *call_map);
-int get_height(t_gamedata *call_map);
+/*Rendering functions*/
+int		render_rect(t_gamedata *gamedata,int x,int y);
+void	render_floor(t_gamedata *gamedata, int color);
+void	render_ceiling(t_gamedata *gamedata, int color);
+void	render_bg_map(t_gamedata *gamedata, int color);
+void	DrawCube(t_gamedata *gamedata,float beginX,float beginY,float endX,float endY,int color,int cubewith);
+void	pixelPlayer(t_gamedata *gamedata);
+
+/*Map drawing and initialization functions*/
+void	init_textures(t_gamedata *gamedata);
+void	drawMap(t_gamedata *call_map);
+void	drawMap2(t_gamedata *call_map);
+
+/*input_control*/
+void	w_key(t_gamedata *gamedata);
+void	a_key(t_gamedata *gamedata);
+void	s_key(t_gamedata *gamedata);
+void	d_key(t_gamedata *gamedata);
+void	left_arrow_key(t_gamedata *gamedata);
+void	right_arrow_key(t_gamedata *gamedata);
+int		key_event(int key, t_gamedata *gamedata);
+
+int	exit_game(t_gamedata *gamedata);
+
 #endif

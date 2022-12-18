@@ -12,11 +12,6 @@
 
 #include "../includes/cube3d.h"
 
-int	create_trgb(int t, int r, int g, int b)
-{
-	return (t << 24 | r << 16 | g << 8 | b);
-}
-
 void	init_textures(t_gamedata *gamedata)
 {
 	int	x;
@@ -71,12 +66,13 @@ int	main(int argc, char **argv)
 	gamedata->map_path = argv[1];
 	read_map(gamedata);
 	gamedata->map_split = ft_split(gamedata->map, '\n');
+	//init_textures(gamedata);
 	init_2dwindow(gamedata);
 	init_3dwindow(gamedata);
 	init_floor_ceiling(gamedata);
 	drawMap(gamedata);
 	mlx_hook(gamedata->mlx_window, 2, 1L << 0, key_event, gamedata);
-	//mlx_hook(gamedata.mlx_window, 17, 1L << 17, exit_game, &gamedata);
+	//mlx_hook(gamedata->mlx_window, 17, 1L << 17, exit_game, gamedata);
 	mlx_loop(gamedata->mlx);
 	return (0);
 }

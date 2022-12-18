@@ -62,7 +62,7 @@ void	drawLine3d(t_gamedata *gamedata, int begx, int begy,int endx,int endy,int c
     }
 }
 
-void 	rawLine3d_texture(t_gamedata *gamedata, float begx, float begy,float shade,float texture_x,float lineHeight)
+void 	drawLine3d_texture(t_gamedata *gamedata, float begx, float begy,float shade,float texture_x,float lineHeight)
 {
 	int y = 0;
 	int color;
