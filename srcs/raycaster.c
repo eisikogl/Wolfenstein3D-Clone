@@ -12,14 +12,17 @@
 
 #include "../includes/cube3d.h"
 
-float dist(float beginX,float beginY,float endX,float endY,float angle)
+float	dist(float beginx, float beginy, float endx, float endy, float angle)
 {
-	float deltaX = endX - beginX;
-    float deltaY = endY - beginY;
-	return sqrt((deltaX  * deltaX) + (deltaY * deltaY));
+	float	deltax;
+	float	deltay;
+
+	deltax = endx - beginx;
+	deltay = endy - beginy;
+	return (sqrt((deltax * deltax) + (deltay * deltay)));
 }
 
-void drawRays(t_gamedata *gamedata)
+void	drawRays(t_gamedata *gamedata)
 {
     int r,map_x,map_y,map_pos,dof;
     float ray_x,ray_y,ray_angle,x_offset,y_offset,distT;

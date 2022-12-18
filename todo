@@ -1,6 +1,18 @@
-Textures input north south west east
+Textures input north south west east:
+-c:main init textures add W E S
+
 render Textures
 
-norminette
+map_drawing(c:25)-> add angles for W E S
+
+norminette:
+-input_control
+-line_drawing
+-main
+-map_drawing
+-pixel_drawing //done
+-raycaster
+-read_map
+-Rendering_functions
 
 leaks

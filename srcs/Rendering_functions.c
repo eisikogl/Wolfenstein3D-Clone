@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/26 17:19:54 by calion            #+#    #+#             */
+/*   Updated: 2022/12/16 22:04:29 by calion           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/cube3d.h"
 
-int render_rect(t_gamedata *gamedata,int x,int y)
+int	render_rect(t_gamedata *gamedata, int x, int y)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = y;
 	while (i < y + 16)
@@ -18,7 +30,7 @@ int render_rect(t_gamedata *gamedata,int x,int y)
 	i = y+1;
 	while (i < y + 15)
 	{
-		j = x+1;
+		j = x + 1;
 		while (j < x + 15)
 		{
 			my_mlx_pixel_put(gamedata, j++, i, 0x00FF0000);
@@ -29,22 +41,23 @@ int render_rect(t_gamedata *gamedata,int x,int y)
 }
 
 
-void DrawCube(t_gamedata *gamedata,float beginX,float beginY,float endX,float endY,int color,int cubewith)
-{    
-    int j;
-    int i = 0;
-    /*player rectangle*/
-    while (i < endY + cubewith)
+void DrawCube(t_gamedata *gamedata, float beginX, float beginY, float endX, float endY, int color, int cubewith)
+{
+	int	j;
+	int	i;
+
+	i = 0;
+/*player rectangle*/
+	while (i < endY + cubewith)
 	{
 		j = 0;
 		while (j < endX)
-        {
-			mlx_pixel_put(gamedata->mlx,gamedata->mlx_3dwindow, beginX + j, beginY + i, color);
-            j++;
-        }
+		{
+			mlx_pixel_put(gamedata->mlx, gamedata->mlx_3dwindow, beginX + j, beginY + i, color);
+			j++;
+		}
 		++i;
 	}
-   
 }
 
 
@@ -89,10 +102,10 @@ void	render_bg_map(t_gamedata *gamedata, int color)
 	int	j;
 
 	i = 0;
-	while (i < gamedata->mapY*16)
+	while (i < gamedata->mapY * 16)
 	{
 		j = 0;
-		while (j < gamedata->mapX*16)
+		while (j < gamedata->mapX * 16)
 		{
 			my_mlx_pixel_put(gamedata, j++, i, color);
 		}
@@ -101,9 +114,9 @@ void	render_bg_map(t_gamedata *gamedata, int color)
 }
 
 
-void pixelPlayer(t_gamedata *gamedata)
+void	pixelPlayer(t_gamedata *gamedata)
 {    
-    int rectheigt = 5;
+    int	rectheigt = 5;
     int rectwidth = 5; // odd numbers so arm is in middle;
     int j;
     int i = 0;
