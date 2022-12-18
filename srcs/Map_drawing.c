@@ -12,12 +12,29 @@
 
 #include "../includes/cube3d.h"
 
+void	starting_pos(t_gamedata *gamedata,char orient)
+{
+	if (orient == 'N')
+		gamedata->player_angle = PI / 2;
+	else if (orient == 'S')
+		gamedata->player_angle = P3;
+	else if (orient == 'E')
+		gamedata->player_angle = 0;
+	else if (orient == 'W')
+		gamedata->player_angle = PI;
+
+	gamedata->player_dx = cos(gamedata->player_angle) * 5;
+	gamedata->player_dy = sin(gamedata->player_angle) * 5;
+	pixelPlayer(gamedata);
+}
+
 void	drawMap(t_gamedata *call_map)
 {
-	int	i;
-	int	j;
-	int	x;
-	int	y;
+	int		i;
+	int		j;
+	int		x;
+	int		y;
+	char	orient;
 
 	y = 0;
 	i = 0;
@@ -28,22 +45,19 @@ void	drawMap(t_gamedata *call_map)
 	{
 		j = 0;
 		x = 0;
-		while (call_map->map_split[i][j] != '\0' && '\n')
+		while (call_map->map_split[i][j] != '\0')
 		{
 			if (call_map->map_split[i][j] == '1')
 			{
 				render_rect(call_map, x, y);
 			}
-			if (call_map->map_split[i][j] == 'N') //angles for S W E
+			if (call_map->map_split[i][j] == 'N' || call_map->map_split[i][j] == 'S' || call_map->map_split[i][j] == 'W' || call_map->map_split[i][j] == 'E') //angles for S W E
 			{
 				call_map->player_x = x;
 				call_map->player_y = y;
-				call_map->player_angle = PI / 2;
-				call_map->player_dx = cos(call_map->player_angle) * 5;
-				call_map->player_dy = sin(call_map->player_angle) * 5;
-				pixelPlayer(call_map);
+				orient = call_map->map_split[i][j];
+				starting_pos(call_map, orient);
 			}
-
 			x += 16;
 			j++;
 		}

@@ -4,7 +4,9 @@ Textures input north south west east:
 
 render Textures
 
-map_drawing(c:37)-> add angles for W E S
+map_drawing(c:37)-> add angles for W E S // done starting orientation fixed
+
+Inverted controls left right inverted map ?? //done (call_map->map_split[i][j] != '\0' && '\n') wrong usage
 
 norminette:
 -input_control //done
