@@ -28,7 +28,6 @@ void	drawLine(t_gamedata *gamedata, int begx, int begy, int endx, int endy, int 
 	deltay /= pixels;
 	pixelx = begx;
 	pixely = begy;
-
 	while (pixels)
 	{
 		if (pixelx < gamedata->mapX * 16 && \
@@ -74,6 +73,9 @@ void	drawLine3d_texture(t_gamedata *gamedata, float begx, float begy, float shad
 	float	texture_offset;
 	float	WallOffsetY;
 	float	texture_y;
+	float r;
+	float g;
+	float b;
 
 	y = 0;
 	texture_step = 64.0 / (float)lineHeight;
@@ -85,10 +87,6 @@ void	drawLine3d_texture(t_gamedata *gamedata, float begx, float begy, float shad
 	}
 	WallOffsetY = 256 - lineHeight / 2;
 	texture_y = texture_offset * texture_step;
-
-	float r;
-	float g;
-	float b;
 	while (y < lineHeight)
 	{
 		r = brick_wall[(int)(texture_y) * 64 * 3 + (int)(texture_x) *3];
@@ -98,5 +96,5 @@ void	drawLine3d_texture(t_gamedata *gamedata, float begx, float begy, float shad
 		my_mlx_pixel_put3d(gamedata, begx, y + WallOffsetY, color);
 		texture_y += texture_step;
 		y++;
-    }
+	}
 }

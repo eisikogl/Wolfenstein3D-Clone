@@ -22,7 +22,6 @@ void	starting_pos(t_gamedata *gamedata, char orient)
 		gamedata->player_angle = 0;
 	else if (orient == 'W')
 		gamedata->player_angle = PI;
-
 	gamedata->player_dx = cos(gamedata->player_angle) * 5;
 	gamedata->player_dy = sin(gamedata->player_angle) * 5;
 	pixelPlayer(gamedata);
@@ -114,4 +113,3 @@ void	drawMap2(t_gamedata *call_map)
 	mlx_put_image_to_window(call_map->mlx, call_map->mlx_3dwindow, \
 	call_map->img3dwin, 0, 0);
 }
-

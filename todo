@@ -24,3 +24,4 @@ leaks:
 
 Errorhandling:
 -read_map
+-exitmodes
