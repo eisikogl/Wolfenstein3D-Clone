@@ -2,7 +2,7 @@ Textures input north south west east:
 -(c:180)raycaster N E S W
 -c:main init textures add W E S
 
-render Textures
+render Textures:
 
 map_drawing(c:37)-> add angles for W E S // done starting orientation fixed
 
@@ -12,7 +12,7 @@ norminette:
 -input_control //done
 -input_control_funcs //done
 -line_drawing
--main
+-main //done
 -map_drawing
 -pixel_drawing //done
 -raycaster

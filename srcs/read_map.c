@@ -112,10 +112,12 @@ void	read_map(t_gamedata *call_map)
 
 int	get_line_len(t_gamedata *call_map)
 {
-	int i = 0;
-    int temp = 0;
-    int j;
-    
+	int	i;
+	int	temp;
+	int	j;
+
+	i = 0;
+	temp = 0;
 	while (call_map->map_split[i] != NULL)
 	{
 		j = 0;
@@ -134,7 +136,7 @@ int	get_line_len(t_gamedata *call_map)
 
 int	get_height(t_gamedata *call_map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (call_map->map_split[i] != NULL)

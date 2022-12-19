@@ -12,7 +12,7 @@
 
 #include "../includes/cube3d.h"
 
-void	starting_pos(t_gamedata *gamedata,char orient)
+void	starting_pos(t_gamedata *gamedata, char orient)
 {
 	if (orient == 'N')
 		gamedata->player_angle = PI / 2;
@@ -51,7 +51,10 @@ void	drawMap(t_gamedata *call_map)
 			{
 				render_rect(call_map, x, y);
 			}
-			if (call_map->map_split[i][j] == 'N' || call_map->map_split[i][j] == 'S' || call_map->map_split[i][j] == 'W' || call_map->map_split[i][j] == 'E') //angles for S W E
+			if (call_map->map_split[i][j] == 'N' \
+			|| call_map->map_split[i][j] == 'S' \
+			|| call_map->map_split[i][j] == 'W' \
+			|| call_map->map_split[i][j] == 'E')
 			{
 				call_map->player_x = x;
 				call_map->player_y = y;
@@ -64,8 +67,10 @@ void	drawMap(t_gamedata *call_map)
 		y += 16;
 		i++;
 	}
-	mlx_put_image_to_window(call_map->mlx, call_map->mlx_window, call_map->img2d, 0, 0);
-	mlx_put_image_to_window(call_map->mlx, call_map->mlx_3dwindow, call_map->img3dwin, 0, 0);
+	mlx_put_image_to_window(call_map->mlx, call_map->mlx_window, \
+	call_map->img2d, 0, 0);
+	mlx_put_image_to_window(call_map->mlx, call_map->mlx_3dwindow, \
+	call_map->img3dwin, 0, 0);
 }
 
 void	drawMap2(t_gamedata *call_map)
@@ -77,7 +82,8 @@ void	drawMap2(t_gamedata *call_map)
 
 	y = 0;
 	i = 0;
-	call_map->img2d = mlx_new_image(call_map->mlx, call_map->mapX * 16, call_map->mapY * 16);
+	call_map->img2d = mlx_new_image(call_map->mlx, \
+	call_map->mapX * 16, call_map->mapY * 16);
 	call_map->img3dwin = mlx_new_image(call_map->mlx, 1024, 512);
 	render_floor(call_map, call_map->trgb_floor);
 	render_ceiling(call_map, call_map->trgb_ceiling);
@@ -103,7 +109,9 @@ void	drawMap2(t_gamedata *call_map)
 		i++;
 	}
 	pixelPlayer(call_map);
-	mlx_put_image_to_window(call_map->mlx, call_map->mlx_window, call_map->img2d, 0, 0);
-	mlx_put_image_to_window(call_map->mlx, call_map->mlx_3dwindow, call_map->img3dwin, 0, 0);
+	mlx_put_image_to_window(call_map->mlx, call_map->mlx_window, \
+	call_map->img2d, 0, 0);
+	mlx_put_image_to_window(call_map->mlx, call_map->mlx_3dwindow, \
+	call_map->img3dwin, 0, 0);
 }
 

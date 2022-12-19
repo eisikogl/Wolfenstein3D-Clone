@@ -27,7 +27,7 @@ int	render_rect(t_gamedata *gamedata, int x, int y)
 		}
 		++i;
 	}
-	i = y+1;
+	i = y + 1;
 	while (i < y + 15)
 	{
 		j = x + 1;
@@ -41,19 +41,19 @@ int	render_rect(t_gamedata *gamedata, int x, int y)
 }
 
 
-void DrawCube(t_gamedata *gamedata, float beginX, float beginY, float endX, float endY, int color, int cubewith)
+void DrawCube(t_gamedata *gamedata, float begix, float begiy, float endx, float endy, int color, int cubewith)
 {
 	int	j;
 	int	i;
 
 	i = 0;
-/*player rectangle*/
-	while (i < endY + cubewith)
+	while (i < endy + cubewith)
 	{
 		j = 0;
-		while (j < endX)
+		while (j < endx)
 		{
-			mlx_pixel_put(gamedata->mlx, gamedata->mlx_3dwindow, beginX + j, beginY + i, color);
+			mlx_pixel_put(gamedata->mlx, gamedata->mlx_3dwindow, \
+			begix + j, begiy + i, color);
 			j++;
 		}
 		++i;
@@ -115,28 +115,28 @@ void	render_bg_map(t_gamedata *gamedata, int color)
 
 
 void	pixelPlayer(t_gamedata *gamedata)
-{    
-    int	rectheigt = 5;
-    int rectwidth = 5; // odd numbers so arm is in middle;
-    int j;
-    int i = 0;
-    /*player rectangle*/
-    while (i < rectheigt)
-    {
-        j = 0;
-        while (j < rectwidth)
-        {
-            my_mlx_pixel_put(gamedata, gamedata->player_x + j, gamedata->player_y + i, 0xFFFFFF00);
-            j++;
-        }
-        ++i;
-    }
-    /*player arm*/
-    //printf("im rayangle: %f \n",gamedata->player_angle);
-    //printf("im player_y = %d \n",(int)(gamedata->player_y / 16) * 16);
-    drawRays(gamedata);
-    drawLine(gamedata,gamedata->player_x + 2,gamedata->player_y + 2,
-    (gamedata->player_x + 2) - 2 * -gamedata->player_dx, (gamedata->player_y + 2) - 2 * gamedata->player_dy,0x00FF0000);
-    // mlx_pixel_put(gamedata->mlx, gamedata->mlx_window, gamedata->player_x + j, gamedata->player_y + i, 0x00FF0000);
+{
+	int	rectheigt;
+	int	rectwidth;
+	int	j;
+	int	i;
 
+	rectheigt = 5;
+	rectwidth = 5;
+	i = 0;
+	while (i < rectheigt)
+	{
+		j = 0;
+		while (j < rectwidth)
+		{
+			my_mlx_pixel_put(gamedata, gamedata->player_x + j, \
+			gamedata->player_y + i, 0xFFFFFF00);
+			j++;
+		}
+		++i;
+	}
+	drawRays(gamedata);
+	drawLine(gamedata, gamedata->player_x + 2, gamedata->player_y + 2, \
+	(gamedata->player_x + 2) - 2 * (-gamedata->player_dx), \
+	(gamedata->player_y + 2) - 2 * gamedata->player_dy, 0x00FF0000);
 }
