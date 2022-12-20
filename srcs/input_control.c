@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_control.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/16 22:14:17 by calion           ###   ########.fr       */
+/*   Updated: 2022/12/20 16:57:01 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,19 @@ void	right_arrow_key(t_gamedata *gamedata)
 
 int	key_event(int key, t_gamedata *gamedata)
 {
-	if (key == 119)
+	if (key == 13)
 		w_key(gamedata);
-	if (key == 97)
+	if (key == 0)
 		a_key(gamedata);
-	if (key == 115)
+	if (key == 1)
 		s_key(gamedata);
-	if (key == 100)
+	if (key == 2)
 		d_key(gamedata);
-	if (key == 65361)
+	if (key == 123)
 		left_arrow_key(gamedata);
-	if (key == 65363)
+	if (key == 124)
 		right_arrow_key(gamedata);
-	if (key == 65307)
+	if (key == 8734)
 	{
 	}
 	return (0);

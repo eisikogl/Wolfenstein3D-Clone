@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/16 23:40:09 by calion           ###   ########.fr       */
+/*   Updated: 2022/12/20 23:52:08 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,17 @@ void	init_textures(t_gamedata *gamedata)
 
 	x = 64;
 	gamedata->north_texture = mlx_xpm_file_to_image(gamedata->mlx, \
-	gamedata->north_texture_path, &x, &x);
+	"./assets/bricksx64.xpm", &x, &x);
 	gamedata->north_addr = mlx_get_data_addr(gamedata->north_texture, \
 	&gamedata->north_bits_per_pixel, &gamedata->north_line_length, \
 	&gamedata->north_endian);
+
+	// int i = 0;
+	// while(i < 64 * 64)
+	// {
+	// 	printf("%d,\n", gamedata->north_addr[i]);
+	// 	i++;
+	// }
 }
 
 void	init_2dwindow(t_gamedata *gamedata)
@@ -66,9 +73,9 @@ int	main(int argc, char **argv)
 	gamedata->map_path = argv[1];
 	read_map(gamedata);
 	gamedata->map_split = ft_split(gamedata->map, '\n');
-	//init_textures(gamedata);
 	init_2dwindow(gamedata);
 	init_3dwindow(gamedata);
+	init_textures(gamedata);
 	init_floor_ceiling(gamedata);
 	drawMap(gamedata);
 	mlx_hook(gamedata->mlx_window, 2, 1L << 0, key_event, gamedata);

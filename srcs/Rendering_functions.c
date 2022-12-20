@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   Rendering_functions.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:19:54 by calion            #+#    #+#             */
-/*   Updated: 2022/12/16 22:04:29 by calion           ###   ########.fr       */
+/*   Updated: 2022/12/20 17:00:50 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	render_rect(t_gamedata *gamedata, int x, int y)
 	}
 	return (0);
 }
-
 
 void DrawCube(t_gamedata *gamedata, float begix, float begiy, float endx, float endy, int color, int cubewith)
 {

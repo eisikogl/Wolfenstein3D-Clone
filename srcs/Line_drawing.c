@@ -1,17 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   Line_drawing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 06:08:23 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/09/26 19:24:01 by calion           ###   ########.fr       */
+/*   Updated: 2022/12/20 23:38:45 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
-#include "../assets/bricksx64.ppm" //fix for image input
+
+int	image_get_pixel(t_gamedata *img, int x, int y)
+{
+	if (x < 0 || x > 64 || y < 0 || y > 64)
+		return (0);
+	return (*((int *)(img->north_addr + (y * img->north_line_length) \
+	+ (x * 4))));
+}
 
 void	drawLine(t_gamedata *gamedata, int begx, int begy, int endx, int endy, int color)
 {
@@ -73,9 +80,10 @@ void	drawLine3d_texture(t_gamedata *gamedata, float begx, float begy, float shad
 	float	texture_offset;
 	float	WallOffsetY;
 	float	texture_y;
-	float r;
-	float g;
-	float b;
+
+	char r;
+	char g;
+	char b;
 
 	y = 0;
 	texture_step = 64.0 / (float)lineHeight;
@@ -89,11 +97,8 @@ void	drawLine3d_texture(t_gamedata *gamedata, float begx, float begy, float shad
 	texture_y = texture_offset * texture_step;
 	while (y < lineHeight)
 	{
-		r = brick_wall[(int)(texture_y) * 64 * 3 + (int)(texture_x) *3];
-		g = brick_wall[(int)(texture_y) * 64 * 3 + 1 + (int)(texture_x) * 3 + 1];
-		b = brick_wall[(int)(texture_y) * 64 * 3 + 2 + (int)(texture_x) * 3 + 2];
-		color = create_trgb(0, r * shade,g * shade,b * shade);
-		my_mlx_pixel_put3d(gamedata, begx, y + WallOffsetY, color);
+		my_mlx_pixel_put3d(gamedata, begx, y + WallOffsetY, image_get_pixel(gamedata,
+				texture_x,texture_y));
 		texture_y += texture_step;
 		y++;
 	}

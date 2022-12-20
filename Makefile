@@ -18,7 +18,7 @@ $(NAME_MAC):$(OBJS)
 		make -C ./libs/Libft
 		mv ./libs/Libft/libft.a ./libft.a
 
-		$(CC) $(CFLAGS) $(SRCS) framework OpenGL -framework AppKit libmlx.a libft.a -o $(NAME_MAC)
+		$(CC) $(CFLAGS) $(SRCS) -framework OpenGL -framework AppKit libmlx.a libft.a -o $(NAME_MAC)
 
 $(NAME_LINUX):$(OBJS)
 		make -C ./libs/mlx
@@ -28,7 +28,7 @@ $(NAME_LINUX):$(OBJS)
 		mv ./libs/Libft/libft.a ./libft.a
 
 		$(CC) $(CFLAGS) $(SRCS) libmlx_Linux.a libft.a -L/usr/lib -lXext -lX11 -lm -o $(NAME_LINUX)
-all: 	$(NAME_LINUX)
+all: 	$(NAME_MAC)
 
 clean:
 		make -C ./libs/mlx clean
