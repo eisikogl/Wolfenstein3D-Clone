@@ -1,11 +1,11 @@
 Textures input north south west east:
 -XPM texture input working // done
 -(c:180)raycaster N E S W
--c:main init textures add W E S
--Choose right texture for direction
+-c:main init textures add W E S // done
+-Choose right texture for direction // done
 
 render Textures:
--render right texture
+-render right texture // done
 
 map_drawing(c:37)-> add angles for W E S // done starting orientation fixed
 
