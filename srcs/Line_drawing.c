@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 06:08:23 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/21 05:14:51 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/21 05:53:38 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,6 @@ void	drawLine(t_gamedata *gamedata, int begx, int begy, int endx, int endy, int 
 			pixelx += deltax;
 			pixely += deltay;
 		}
-		--pixels;
-	}
-}
-
-void	drawLine3d(t_gamedata *gamedata, int begx, int begy, int endx, int endy, int color)
-{
-	float	deltax;
-	float	deltay;
-	int		pixels;
-	double	pixelx;
-	double	pixely;
-
-	deltax = endx - begx;
-	deltay = endy - begy;
-	pixels = sqrt((deltax * deltax) + (deltay * deltay));
-	deltax /= pixels;
-	deltay /= pixels;
-	pixelx = begx;
-	pixely = begy;
-	while (pixels)
-	{
-		my_mlx_pixel_put3d(gamedata, pixelx, pixely, color);
-		pixelx += deltax;
-		pixely += deltay;
 		--pixels;
 	}
 }

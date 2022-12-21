@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:56:45 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/21 02:37:09 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/21 05:41:25 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ int		create_trgb(int t, int r, int g, int b);
 
 /*Line drawing functions*/
 void	drawLine(t_gamedata *gamedata, int begx, int begy,int endx,int endy,int color);
-void	drawLine3d(t_gamedata *gamedata, int begx, int begy,int endx,int endy,int color);
 void 	drawLine3d_texture(t_gamedata *gamedata, float begx, float begy,float shade,float texture_x,float lineHeight);
 
 /*Ray casting functions*/

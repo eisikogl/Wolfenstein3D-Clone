@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/21 01:50:34 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/21 05:42:32 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,6 @@ void	init_textures(t_gamedata *gamedata)
 		&gamedata->texture_endian);
 		i++;
 	}
-
-	// int i = 0;
-	// while(i < 64 * 64)
-	// {
-	// 	printf("%d,\n", gamedata->north_addr[i]);
-	// 	i++;
-	// }
 }
 
 void	init_2dwindow(t_gamedata *gamedata)
