@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:56:45 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/16 23:16:54 by calion           ###   ########.fr       */
+/*   Updated: 2022/12/21 02:37:09 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,14 @@ typedef struct s_gamedata
 	int		trgb_floor;
 	int		trgb_ceiling;
 
-	void	*north_texture;
-	char	*north_addr;
-	int		north_bits_per_pixel;
-	int		north_line_length;
-	int		north_endian;
+	void	**texture_active_img;
+	char	**texture_addr;
+	int		texture_bits_per_pixel;
+	int		texture_length;
+	int		texture_endian;
+	char	ray_orientation;
+
+	float rayangle;
 }t_gamedata;
 
 

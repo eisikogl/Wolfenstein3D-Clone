@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 06:08:23 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/20 23:38:45 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/21 02:38:08 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,19 @@ int	image_get_pixel(t_gamedata *img, int x, int y)
 {
 	if (x < 0 || x > 64 || y < 0 || y > 64)
 		return (0);
-	return (*((int *)(img->north_addr + (y * img->north_line_length) \
-	+ (x * 4))));
+	if(img->ray_orientation == 'N')
+		return (*((int *)(img->texture_addr[0] + (y * img->texture_length) \
+		+ (x * 4))));
+	else if(img->ray_orientation == 'S')
+		return (*((int *)(img->texture_addr[1] + (y * img->texture_length) \
+		+ (x * 4))));
+	else if(img->ray_orientation == 'E')
+		return (*((int *)(img->texture_addr[2] + (y * img->texture_length) \
+		+ (x * 4))));
+	else if(img->ray_orientation == 'W')
+		return (*((int *)(img->texture_addr[3] + (y * img->texture_length) \
+		+ (x * 4))));
+	return (0);
 }
 
 void	drawLine(t_gamedata *gamedata, int begx, int begy, int endx, int endy, int color)
@@ -80,10 +91,6 @@ void	drawLine3d_texture(t_gamedata *gamedata, float begx, float begy, float shad
 	float	texture_offset;
 	float	WallOffsetY;
 	float	texture_y;
-
-	char r;
-	char g;
-	char b;
 
 	y = 0;
 	texture_step = 64.0 / (float)lineHeight;

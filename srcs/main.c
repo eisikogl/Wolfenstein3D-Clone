@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/20 23:52:08 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/21 01:50:34 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,27 @@
 void	init_textures(t_gamedata *gamedata)
 {
 	int	x;
-
+	int i;
 	x = 64;
-	gamedata->north_texture = mlx_xpm_file_to_image(gamedata->mlx, \
-	"./assets/bricksx64.xpm", &x, &x);
-	gamedata->north_addr = mlx_get_data_addr(gamedata->north_texture, \
-	&gamedata->north_bits_per_pixel, &gamedata->north_line_length, \
-	&gamedata->north_endian);
+	gamedata->texture_active_img = malloc(100000000);
+	gamedata->texture_active_img[0] = mlx_xpm_file_to_image(gamedata->mlx, \
+	"./assets/north.xpm", &x, &x);
+		gamedata->texture_active_img[1] = mlx_xpm_file_to_image(gamedata->mlx, \
+	"./assets/south.xpm", &x, &x);
+		gamedata->texture_active_img[2] = mlx_xpm_file_to_image(gamedata->mlx, \
+	"./assets/east.xpm", &x, &x);
+		gamedata->texture_active_img[3] = mlx_xpm_file_to_image(gamedata->mlx, \
+	"./assets/west.xpm", &x, &x);
+
+	i = 0;
+	gamedata->texture_addr = malloc(100000);
+	while(i < 4)
+	{
+		gamedata->texture_addr[i] = mlx_get_data_addr(gamedata->texture_active_img[i], \
+		&gamedata->texture_bits_per_pixel, &gamedata->texture_length, \
+		&gamedata->texture_endian);
+		i++;
+	}
 
 	// int i = 0;
 	// while(i < 64 * 64)

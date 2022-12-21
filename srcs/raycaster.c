@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:20:07 by calion            #+#    #+#             */
-/*   Updated: 2022/12/20 23:54:09 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/21 02:54:51 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,20 +177,26 @@ void	drawRays(t_gamedata *gamedata)
 	{
 		/*south*/
 		texture_x = (int)(ray_x * 2.0) % 64;
+		texture_x = 63 - texture_x;
+		gamedata->ray_orientation = 'N';
 		/*north*/
-		if (ray_angle > 180)
+		if (ray_angle > PI)
 		{
 			texture_x = 63 - texture_x;
+			gamedata->ray_orientation = 'S';
 		}
 	}
 	else
 	{
 		/*east*/
 		texture_x = (int)(ray_y * 2.0) % 64;
+		texture_x = 63 - texture_x;
+		gamedata->ray_orientation = 'E';
 		/*west*/
-		if (ray_angle > 90 && ray_angle < 270)
+		if (ray_angle > P2 && ray_angle < P3)
 		{
 			texture_x = 63 - texture_x;
+			gamedata->ray_orientation = 'W';
 		}
 	}
 	drawLine3d_texture(gamedata, r/8, WallOffsetY, shade, texture_x, lineHeight);
