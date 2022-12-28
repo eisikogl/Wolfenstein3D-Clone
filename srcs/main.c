@@ -12,26 +12,62 @@
 
 #include "../includes/cube3d.h"
 
+int	get_line_len(t_gamedata *call_map)
+{
+	int	i;
+	int	temp;
+	int	j;
+
+	i = 0;
+	temp = 0;
+	while (call_map->map[i] != NULL)
+	{
+		j = 0;
+		while (call_map->map[i][j] != '\0')
+		{
+			j++;
+		}
+		if (j > temp)
+		{
+			temp = j;
+		}
+		i++;
+	}
+	return (temp);
+}
+
+int	get_height(t_gamedata *call_map)
+{
+	int	i;
+
+	i = 0;
+	while (call_map->map[i] != NULL)
+	{
+		i++;
+	}
+	return (i);
+}
+
 void	init_textures(t_gamedata *gamedata)
 {
 	int	x;
-	int i;
-	x = 64;
-	gamedata->texture_active_img = malloc(100000000);
-	gamedata->texture_active_img[0] = mlx_xpm_file_to_image(gamedata->mlx, \
-	"./assets/north.xpm", &x, &x);
-		gamedata->texture_active_img[1] = mlx_xpm_file_to_image(gamedata->mlx, \
-	"./assets/south.xpm", &x, &x);
-		gamedata->texture_active_img[2] = mlx_xpm_file_to_image(gamedata->mlx, \
-	"./assets/east.xpm", &x, &x);
-		gamedata->texture_active_img[3] = mlx_xpm_file_to_image(gamedata->mlx, \
-	"./assets/west.xpm", &x, &x);
+	int	i;
 
+	x = 64;
+	gamedata->texture_active_img[0] = mlx_xpm_file_to_image(gamedata->mlx, \
+	"./assets/wall1.xpm", &x, &x);
+		gamedata->texture_active_img[1] = mlx_xpm_file_to_image(gamedata->mlx, \
+	"./assets/wall2.xpm", &x, &x);
+		gamedata->texture_active_img[2] = mlx_xpm_file_to_image(gamedata->mlx, \
+	"./assets/wall3.xpm", &x, &x);
+		gamedata->texture_active_img[3] = mlx_xpm_file_to_image(gamedata->mlx, \
+	"./assets/wood.xpm", &x, &x);
 	i = 0;
-	gamedata->texture_addr = malloc(100000);
-	while(i < 4)
+	gamedata->texture_addr[4];
+	while (i < 4)
 	{
-		gamedata->texture_addr[i] = mlx_get_data_addr(gamedata->texture_active_img[i], \
+		gamedata->texture_addr[i] = \
+		mlx_get_data_addr(gamedata->texture_active_img[i], \
 		&gamedata->texture_bits_per_pixel, &gamedata->texture_length, \
 		&gamedata->texture_endian);
 		i++;
@@ -40,12 +76,12 @@ void	init_textures(t_gamedata *gamedata)
 
 void	init_2dwindow(t_gamedata *gamedata)
 {
-	gamedata->mapX = get_line_len(gamedata);
-	gamedata->mapY = get_height(gamedata);
-	gamedata->mlx_window = mlx_new_window(gamedata->mlx, 16 * gamedata->mapX, \
-	16 * gamedata->mapY, "2D_MAP");
-	gamedata->img2d = mlx_new_image(gamedata->mlx, gamedata->mapX * 16, \
-	gamedata->mapY * 16);
+	gamedata->mapx = get_line_len(gamedata);
+	gamedata->mapy = get_height(gamedata);
+	gamedata->mlx_window = mlx_new_window(gamedata->mlx, 16 * gamedata->mapx, \
+	16 * gamedata->mapy, "2D_MAP");
+	gamedata->img2d = mlx_new_image(gamedata->mlx, gamedata->mapx * 16, \
+	gamedata->mapy * 16);
 	gamedata->addr = mlx_get_data_addr(gamedata->img2d, \
 	&gamedata->bits_per_pixel, &gamedata->line_length, &gamedata->endian);
 }
@@ -63,10 +99,10 @@ void	init_3dwindow(t_gamedata *gamedata)
 
 void	init_floor_ceiling(t_gamedata *gamedata)
 {
-	gamedata->trgb_floor = create_trgb(0, gamedata->floor_color[0], \
-	gamedata->floor_color[1], gamedata->floor_color[2]);
-	gamedata->trgb_ceiling = create_trgb(0, gamedata->ceiling_color[0], \
-	gamedata->ceiling_color[1], gamedata->ceiling_color[2]);
+	gamedata->trgb_floor = create_trgb(0, gamedata->f_color[0], \
+	gamedata->f_color[1], gamedata->f_color[2]);
+	gamedata->trgb_ceiling = create_trgb(0, gamedata->c_color[0], \
+	gamedata->c_color[1], gamedata->c_color[2]);
 }
 
 int	main(int argc, char **argv)
@@ -76,10 +112,22 @@ int	main(int argc, char **argv)
 	gamedata = malloc(sizeof(t_gamedata));
 	if (argc != 2)
 		printf("add map \n");
+	gamedata->map = ft_calloc(1, sizeof(char *));
+	if (!gamedata->map)
+		return (0);
+	gamedata->map_h = 0;
+	gamedata->map_w = 0;
+	gamedata->map[0] = NULL;
 	gamedata->mlx = mlx_init();
-	gamedata->map_path = argv[1];
-	read_map(gamedata);
-	gamedata->map_split = ft_split(gamedata->map, '\n');
+	if (!ft_check_file_extension(argv[1]) || !ft_parse_file(argv[1], gamedata))
+	{
+		ft_free_cub(gamedata);
+		free(gamedata->mlx);
+		return (2);
+	}
+//	gamedata->map_path = argv[1];
+//	read_map(gamedata);
+//	gamedata->map_split = ft_split(gamedata->map, '\n');
 	init_2dwindow(gamedata);
 	init_3dwindow(gamedata);
 	init_textures(gamedata);

@@ -12,57 +12,76 @@
 
 #include "libft.h"
 
-static size_t	ft_next_charset(const char *s, char c)
+static int	count_words(char const *s, char c)
 {
-	size_t	i;
+	int	fletter;
+	int	i;
+	int	count;
 
+	fletter = -1;
 	i = 0;
-	while (s[i] && s[i] != c)
-		i++;
-	return (i);
-}
-
-static size_t	ft_count_words(const char *s, char c)
-{
-	char	pre_c;
-	size_t	i;
-
-	i = 0;
-	pre_c = c;
-	while (*s)
+	count = 0;
+	while (s[i])
 	{
-		if (pre_c == c && *s != c)
-			i++;
-		pre_c = *s;
-		s++;
-	}
-	return (i);
-}
-
-char	**ft_split(const char *s, char c)
-{
-	char	**tab;
-	size_t	next_charset;
-	size_t	i;
-
-	if (s == NULL)
-		return (NULL);
-	tab = malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
-	if (tab == NULL)
-		return (NULL);
-	i = 0;
-	while (*s)
-	{
-		next_charset = ft_next_charset(s, c);
-		if (next_charset)
+		if (fletter == -1 && s[i] != c)
+			fletter = i;
+		else if (fletter != -1 && s[i] == c)
 		{
-			tab[i] = ft_substr(s, 0, next_charset);
-			s += next_charset;
-			i++;
+			fletter = -1;
+			count++;
 		}
-		else
-			s++;
+		i++;
 	}
-	tab[i] = NULL;
-	return (tab);
+	if (fletter != -1)
+		count++;
+	return (count);
+}
+
+static char	*get_word(char *s, char c, int *i)
+{
+	int		count;
+	int		j;
+	char	*sol;
+
+	count = 0;
+	j = 0;
+	while (s[count] && s[count] != c)
+	{
+		count++;
+	}
+	*i = *i + count;
+	sol = (char *)malloc(count + 1);
+	if (!(sol))
+		return (NULL);
+	while (j < count)
+	{
+		sol[j] = s[j];
+		j++;
+	}
+	sol[j] = 0;
+	return (sol);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**sol;
+	int		i;
+	int		j;
+
+	if (!s)
+		return (NULL);
+	sol = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!(sol))
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		if (s[i] != c)
+			sol[j++] = get_word((char *)&s[i], c, &i);
+		else
+			i++;
+	}
+	sol[j] = NULL;
+	return (sol);
 }

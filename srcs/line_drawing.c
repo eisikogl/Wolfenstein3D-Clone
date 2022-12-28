@@ -16,16 +16,16 @@ int	image_get_pixel(t_gamedata *img, int x, int y)
 {
 	if (x < 0 || x > 64 || y < 0 || y > 64)
 		return (0);
-	if(img->ray_orientation == 'N')
+	if (img->ray_orientation == 'N')
 		return (*((int *)(img->texture_addr[0] + (y * img->texture_length) \
 		+ (x * 4))));
-	else if(img->ray_orientation == 'S')
+	else if (img->ray_orientation == 'S')
 		return (*((int *)(img->texture_addr[1] + (y * img->texture_length) \
 		+ (x * 4))));
-	else if(img->ray_orientation == 'E')
+	else if (img->ray_orientation == 'E')
 		return (*((int *)(img->texture_addr[2] + (y * img->texture_length) \
 		+ (x * 4))));
-	else if(img->ray_orientation == 'W')
+	else if (img->ray_orientation == 'W')
 		return (*((int *)(img->texture_addr[3] + (y * img->texture_length) \
 		+ (x * 4))));
 	return (0);
@@ -48,8 +48,8 @@ void	drawLine(t_gamedata *gamedata, int begx, int begy, int endx, int endy, int 
 	pixely = begy;
 	while (pixels)
 	{
-		if (pixelx < gamedata->mapX * 16 && \
-		pixely < gamedata->mapY * 16 && pixelx > 0 && pixely > 0)
+		if (pixelx < gamedata->mapx * 16 && \
+		pixely < gamedata->mapy * 16 && pixelx > 0 && pixely > 0)
 		{
 			my_mlx_pixel_put(gamedata, pixelx, pixely, color);
 			pixelx += deltax;
@@ -59,13 +59,12 @@ void	drawLine(t_gamedata *gamedata, int begx, int begy, int endx, int endy, int 
 	}
 }
 
-void	drawLine3d_texture(t_gamedata *gamedata, float begx, float begy, float shade, float texture_x, float lineHeight)
+void	drawLine3d_texture(t_gamedata *gamedata, float begx, float texture_x, float lineHeight)
 {
 	int		y;
-	int		color;
 	float	texture_step;
 	float	texture_offset;
-	float	WallOffsetY;
+	float	walloffsety;
 	float	texture_y;
 
 	y = 0;
@@ -76,12 +75,12 @@ void	drawLine3d_texture(t_gamedata *gamedata, float begx, float begy, float shad
 		texture_offset = (lineHeight - 512) / 2.0;
 		lineHeight = 512;
 	}
-	WallOffsetY = 256 - lineHeight / 2;
+	walloffsety = 256 - lineHeight / 2;
 	texture_y = texture_offset * texture_step;
 	while (y < lineHeight)
 	{
-		my_mlx_pixel_put3d(gamedata, begx, y + WallOffsetY, image_get_pixel(gamedata,
-				texture_x,texture_y));
+		my_mlx_pixel_put3d(gamedata, -begx, y + walloffsety, \
+		image_get_pixel(gamedata, texture_x, texture_y));
 		texture_y += texture_step;
 		y++;
 	}

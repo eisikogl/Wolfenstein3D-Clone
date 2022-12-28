@@ -40,7 +40,7 @@ int	render_rect(t_gamedata *gamedata, int x, int y)
 	return (0);
 }
 
-void DrawCube(t_gamedata *gamedata, float begix, float begiy, float endx, float endy, int color, int cubewith)
+void drawCube(t_gamedata *gamedata, float begix, float begiy, float endx, float endy, int color, int cubewith)
 {
 	int	j;
 	int	i;
@@ -58,8 +58,6 @@ void DrawCube(t_gamedata *gamedata, float begix, float begiy, float endx, float 
 		++i;
 	}
 }
-
-
 
 void	render_floor(t_gamedata *gamedata, int color)
 {
@@ -101,17 +99,16 @@ void	render_bg_map(t_gamedata *gamedata, int color)
 	int	j;
 
 	i = 0;
-	while (i < gamedata->mapY * 16)
+	while (i < gamedata->mapy * 16)
 	{
 		j = 0;
-		while (j < gamedata->mapX * 16)
+		while (j < gamedata->mapx * 16)
 		{
 			my_mlx_pixel_put(gamedata, j++, i, color);
 		}
 		++i;
 	}
 }
-
 
 void	pixelPlayer(t_gamedata *gamedata)
 {
@@ -134,7 +131,7 @@ void	pixelPlayer(t_gamedata *gamedata)
 		}
 		++i;
 	}
-	drawRays(gamedata);
+	drawrays(gamedata);
 	drawLine(gamedata, gamedata->player_x + 2, gamedata->player_y + 2, \
 	(gamedata->player_x + 2) - 2 * (-gamedata->player_dx), \
 	(gamedata->player_y + 2) - 2 * gamedata->player_dy, 0x00FF0000);

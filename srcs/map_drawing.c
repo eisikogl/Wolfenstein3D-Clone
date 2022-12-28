@@ -40,24 +40,24 @@ void	drawMap(t_gamedata *call_map)
 	render_floor(call_map, call_map->trgb_floor);
 	render_ceiling(call_map, call_map->trgb_ceiling);
 	render_bg_map(call_map, call_map->trgb_floor);
-	while (call_map->map_split[i] != NULL)
+	while (call_map->map[i] != NULL)
 	{
 		j = 0;
 		x = 0;
-		while (call_map->map_split[i][j] != '\0')
+		while (call_map->map[i][j] != '\0')
 		{
-			if (call_map->map_split[i][j] == '1')
+			if (call_map->map[i][j] == '1')
 			{
 				render_rect(call_map, x, y);
 			}
-			if (call_map->map_split[i][j] == 'N' \
-			|| call_map->map_split[i][j] == 'S' \
-			|| call_map->map_split[i][j] == 'W' \
-			|| call_map->map_split[i][j] == 'E')
+			if (call_map->map[i][j] == 'N' \
+			|| call_map->map[i][j] == 'S' \
+			|| call_map->map[i][j] == 'W' \
+			|| call_map->map[i][j] == 'E')
 			{
 				call_map->player_x = x;
 				call_map->player_y = y;
-				orient = call_map->map_split[i][j];
+				orient = call_map->map[i][j];
 				starting_pos(call_map, orient);
 			}
 			x += 16;
@@ -82,18 +82,18 @@ void	drawMap2(t_gamedata *call_map)
 	y = 0;
 	i = 0;
 	call_map->img2d = mlx_new_image(call_map->mlx, \
-	call_map->mapX * 16, call_map->mapY * 16);
+	call_map->mapx * 16, call_map->mapy * 16);
 	call_map->img3dwin = mlx_new_image(call_map->mlx, 1024, 512);
 	render_floor(call_map, call_map->trgb_floor);
 	render_ceiling(call_map, call_map->trgb_ceiling);
 	render_bg_map(call_map, call_map->trgb_floor);
-	while (call_map->map_split[i] != NULL)
+	while (call_map->map[i] != NULL)
 	{
 		j = 0;
 		x = 0;
-		while (call_map->map_split[i][j] != '\0')
+		while (call_map->map[i][j] != '\0')
 		{
-			if (call_map->map_split[i][j] == '1')
+			if (call_map->map[i][j] == '1')
 			{
 				render_rect(call_map, x, y);
 				x += 16;
