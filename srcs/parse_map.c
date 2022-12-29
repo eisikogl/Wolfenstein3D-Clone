@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 13:19:01 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 13:58:46 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ int	ft_check_closed(t_gamedata *cub)
 	i = 0;
 	while (cub->map[i])
 	{
-		//printf("%s",cub->map[i]);
 		j = 0;
 		while (cub->map[i][j])
 		{

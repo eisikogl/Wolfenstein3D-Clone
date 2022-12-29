@@ -6,11 +6,19 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 13:42:27 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 14:26:16 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
+
+int	exit_game(t_gamedata *gamedata)
+{
+	mlx_destroy_window(gamedata->mlx,gamedata->img2d);
+	mlx_destroy_window(gamedata->mlx,gamedata->img3dwin);
+	free(gamedata);
+	return 0;
+}
 
 int	ft_max(int x, int y)
 {
