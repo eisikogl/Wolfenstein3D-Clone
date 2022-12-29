@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 06:08:23 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 16:07:05 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 17:12:38 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int	image_get_pixel(t_gamedata *img, int x, int y)
 	return (0);
 }
 
-void	drawLine(t_gamedata *gamedata, int begx, int begy, int endx, int endy, int color)
+void	drawline(t_gamedata *gamedata, int begx, int begy, int endx, \
+int endy, int color)
 {
 	float	deltax;
 	float	deltay;
@@ -59,7 +60,8 @@ void	drawLine(t_gamedata *gamedata, int begx, int begy, int endx, int endy, int 
 	}
 }
 
-void	drawLine3d_texture(t_gamedata *gamedata, float begx, float texture_x, float lineHeight)
+void	drawline3d_texture(t_gamedata *gamedata, float begx, \
+float texture_x, float lineHeight)
 {
 	int		y;
 	float	texture_step;

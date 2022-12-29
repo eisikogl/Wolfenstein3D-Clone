@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:19:54 by calion            #+#    #+#             */
-/*   Updated: 2022/12/29 15:44:57 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 17:08:25 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,6 @@ int	render_rect(t_gamedata *gamedata, int x, int y)
 		++i;
 	}
 	return (0);
-}
-
-void drawCube(t_gamedata *gamedata, float begix, float begiy, float endx, float endy, int color, int cubewith)
-{
-	int	j;
-	int	i;
-
-	i = 0;
-	while (i < endy + cubewith)
-	{
-		j = 0;
-		while (j < endx)
-		{
-			mlx_pixel_put(gamedata->mlx, gamedata->mlx_3dwindow, \
-			begix + j, begiy + i, color);
-			j++;
-		}
-		++i;
-	}
 }
 
 void	render_floor(t_gamedata *gamedata, int color)
@@ -110,7 +91,7 @@ void	render_bg_map(t_gamedata *gamedata, int color)
 	}
 }
 
-void	pixelPlayer(t_gamedata *gamedata)
+void	pixelplayer(t_gamedata *gamedata)
 {
 	int	rectheigt;
 	int	rectwidth;
@@ -132,7 +113,7 @@ void	pixelPlayer(t_gamedata *gamedata)
 		++i;
 	}
 	drawrays(gamedata);
-	drawLine(gamedata, gamedata->player_x + 2, gamedata->player_y + 2, \
+	drawline(gamedata, gamedata->player_x + 2, gamedata->player_y + 2, \
 	(gamedata->player_x + 2) - 2 * (-gamedata->player_dx), \
 	(gamedata->player_y + 2) - 2 * gamedata->player_dy, 0x00FF0000);
 }

@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:20:07 by calion            #+#    #+#             */
-/*   Updated: 2022/12/21 06:11:02 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:41:19 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ float	draw_2d_lines(t_gamedata *gamedata, t_raycaster *caster)
 		caster->distance = caster->disthori;
 		shade = 1;
 	}
-	drawLine(gamedata, gamedata->player_x + 2, gamedata->player_y + 2, \
+	drawline(gamedata, gamedata->player_x + 2, gamedata->player_y + 2, \
 	caster->ray_x, caster->ray_y, 0x0000FF00);
 	return (shade);
 }

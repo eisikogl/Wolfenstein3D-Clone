@@ -6,25 +6,11 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 13:58:46 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 17:01:06 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
-
-int	ft_error(char *msg)
-{
-	printf("%s",msg);
-	return (0);
-}
-
-void	ft_free_cub(t_gamedata *cub)
-{
-	free(cub->no_path);
-	free(cub->so_path);
-	free(cub->we_path);
-	free(cub->ea_path);
-}
 
 int	ft_check_y_axis(t_gamedata *cub, size_t y, size_t x)
 {

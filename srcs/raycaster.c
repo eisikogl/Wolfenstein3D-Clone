@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:20:07 by calion            #+#    #+#             */
-/*   Updated: 2022/12/29 16:06:07 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:40:50 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	draw_3d_lines(t_gamedata *gd, t_raycaster *rc, float shade, int ray_num)
 			gd->ray_orientation = 'W';
 		}
 	}
-	drawLine3d_texture(gd, ray_num / 2, texture_x, (16 * 512) / rc->distance);
+	drawline3d_texture(gd, ray_num / 2, texture_x, (16 * 512) / rc->distance);
 }
 
 void	get_current_angle(t_gamedata *gamedata, t_raycaster *caster)

@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:56:45 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 16:23:59 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 17:17:25 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,8 @@ void	my_mlx_pixel_put3d(t_gamedata *gamedata, int x, int y, int color);
 int		create_trgb(int t, int r, int g, int b);
 
 /*Line drawing functions*/
-void	drawLine(t_gamedata *gamedata, int begx, int begy, int endx, int endy, int color);
-void 	drawLine3d_texture(t_gamedata *gamedata, float begx, float texture_x, float lineHeight);
+void	drawline(t_gamedata *gamedata, int begx, int begy, int endx, int endy, int color);
+void 	drawline3d_texture(t_gamedata *gamedata, float begx, float texture_x, float lineHeight);
 
 /*ray caster functions*/
 void	horizontalline(t_gamedata *gamedata, t_raycaster *caster);
@@ -164,8 +164,8 @@ int		render_rect(t_gamedata *gamedata,int x,int y);
 void	render_floor(t_gamedata *gamedata, int color);
 void	render_ceiling(t_gamedata *gamedata, int color);
 void	render_bg_map(t_gamedata *gamedata, int color);
-void	drawCube(t_gamedata *gamedata,float beginX,float beginY,float endX,float endY,int color,int cubewith);
-void	pixelPlayer(t_gamedata *gamedata);
+void	drawcube(t_gamedata *gamedata,float beginX,float beginY,float endX,float endY,int color,int cubewith);
+void	pixelplayer(t_gamedata *gamedata);
 
 /*Map drawing and initialization functions*/
 void	init_textures(t_gamedata *gamedata);
@@ -205,4 +205,6 @@ int	ft_check_resources(t_gamedata *cub);
 int	ft_parse_line(char *line, t_gamedata *cub, int *num);
 int	ft_parse_file(char *filename, t_gamedata *gamedata);
 
+void	ft_free_split(char **split);
+size_t	ft_splitlen(char **split);
 #endif
