@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 06:08:23 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/09/26 19:24:01 by calion           ###   ########.fr       */
+/*   Updated: 2022/12/29 13:26:33 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ char	*ft_getline(char *save)
 		line[i] = save[i];
 		i++;
 	}
-	if (save[i] == '\n')
-	{
-		line[i] = save[i];
-		i++;
-	}
+	// if (save[i] == '\n')
+	// {
+	// 	line[i] = save[i];
+	// 	i++;
+	// }
 	line[i] = '\0';
 	return (line);
 }

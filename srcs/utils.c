@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_control.c                                    :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/21 05:55:06 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 13:42:27 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ t_data	get_xpm_image(t_gamedata *cub, char *path)
 {
 	t_data	img;
 	int		w;
-	w=64;
-	img.img = mlx_xpm_file_to_image(cub->mlx, "./assets/wall1.xpm", &w, &w);
+	w = 64;
+	img.img = mlx_xpm_file_to_image(cub->mlx, path, &w, &w);
 	if (!img.img)
 	{
 		free(path);
@@ -92,9 +92,9 @@ int	check_direction_path(t_gamedata *cub, char **split, int *num)
 	if (ft_splitlen(split) != 2)
 		return (0);
 	path = ft_strdup(split[1]);
-	img = get_xpm_image(cub, path);
-	if (!img.img)
-		return (0);
+	// img = get_xpm_image(cub, path);
+	// if (!img.img)
+	// 	return (0);
 	if (!ft_strncmp(split[0], "NO", 2) && !cub->no_path)
 		cub->no_path = path;
 	else if (!ft_strncmp(split[0], "SO", 2) && !cub->so_path)
@@ -105,7 +105,7 @@ int	check_direction_path(t_gamedata *cub, char **split, int *num)
 		cub->ea_path = path;
 	else
 		return (0);
-	mlx_destroy_image(cub->mlx, img.img);
+	// mlx_destroy_image(cub->mlx, img.img);
 	*num += 1;
 	return (1);
 }

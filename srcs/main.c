@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/21 05:42:32 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 13:50:17 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,14 @@ void	init_textures(t_gamedata *gamedata)
 
 	x = 64;
 	gamedata->texture_active_img[0] = mlx_xpm_file_to_image(gamedata->mlx, \
-	"./assets/wall1.xpm", &x, &x);
-		gamedata->texture_active_img[1] = mlx_xpm_file_to_image(gamedata->mlx, \
-	"./assets/wall2.xpm", &x, &x);
-		gamedata->texture_active_img[2] = mlx_xpm_file_to_image(gamedata->mlx, \
-	"./assets/wall3.xpm", &x, &x);
-		gamedata->texture_active_img[3] = mlx_xpm_file_to_image(gamedata->mlx, \
-	"./assets/wood.xpm", &x, &x);
+	gamedata->no_path, &x, &x);
+	gamedata->texture_active_img[1] = mlx_xpm_file_to_image(gamedata->mlx, \
+	gamedata->so_path, &x, &x);
+	gamedata->texture_active_img[2] = mlx_xpm_file_to_image(gamedata->mlx, \
+	gamedata->we_path, &x, &x);
+	gamedata->texture_active_img[3] = mlx_xpm_file_to_image(gamedata->mlx, \
+	gamedata->ea_path, &x, &x);
 	i = 0;
-	gamedata->texture_addr[4];
 	while (i < 4)
 	{
 		gamedata->texture_addr[i] = \
