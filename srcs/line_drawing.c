@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Line_drawing.c                                     :+:      :+:    :+:   */
+/*   line_drawing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 06:08:23 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/21 05:53:38 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:07:05 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	drawLine3d_texture(t_gamedata *gamedata, float begx, float texture_x, float
 	texture_y = texture_offset * texture_step;
 	while (y < lineHeight)
 	{
-		my_mlx_pixel_put3d(gamedata, -begx, y + walloffsety, \
+		my_mlx_pixel_put3d(gamedata, -begx - 1, y + walloffsety, \
 		image_get_pixel(gamedata, texture_x, texture_y));
 		texture_y += texture_step;
 		y++;

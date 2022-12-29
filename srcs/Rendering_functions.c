@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:19:54 by calion            #+#    #+#             */
-/*   Updated: 2022/12/21 06:02:11 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:44:57 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	render_bg_map(t_gamedata *gamedata, int color)
 	int	j;
 
 	i = 0;
-	while (i < gamedata->mapy * 16)
+	while (i < gamedata->window_height)
 	{
 		j = 0;
 		while (j < gamedata->mapx * 16)

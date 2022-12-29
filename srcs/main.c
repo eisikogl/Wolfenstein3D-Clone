@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 14:26:34 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 15:50:25 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,24 @@ void	init_2dwindow(t_gamedata *gamedata)
 {
 	gamedata->mapx = get_line_len(gamedata);
 	gamedata->mapy = get_height(gamedata);
-	gamedata->mlx_window = mlx_new_window(gamedata->mlx, 16 * gamedata->mapx, \
-	16 * gamedata->mapy, "2D_MAP");
+	// gamedata->mlx_window = mlx_new_window(gamedata->mlx, 16 * gamedata->mapx, \
+	// 16 * gamedata->mapy, "2D_MAP");
 	gamedata->img2d = mlx_new_image(gamedata->mlx, gamedata->mapx * 16, \
-	gamedata->mapy * 16);
+	512);
 	gamedata->addr = mlx_get_data_addr(gamedata->img2d, \
 	&gamedata->bits_per_pixel, &gamedata->line_length, &gamedata->endian);
 }
 
 void	init_3dwindow(t_gamedata *gamedata)
 {
-	gamedata->mlx_3dwindow = mlx_new_window(gamedata->mlx, 1024, 512, "3D");
+	int	mapy;
+
+	if((gamedata->mapy * 16) > 512)
+		mapy = 512 + (gamedata->mapy * 16) - 512 ;
+	else
+		mapy = 512;
+
+	gamedata->mlx_3dwindow = mlx_new_window(gamedata->mlx, 1024+gamedata->mapx*16,mapy, "3D");
 	gamedata->window_height = 512;
 	gamedata->window_width = 1024;
 	gamedata->img3dwin = mlx_new_image(gamedata->mlx, gamedata->window_width, \
@@ -132,7 +139,7 @@ int	main(int argc, char **argv)
 	init_textures(gamedata);
 	init_floor_ceiling(gamedata);
 	drawMap(gamedata);
-	mlx_hook(gamedata->mlx_window, 2, 1L << 0, key_event, gamedata);
+	mlx_hook(gamedata->mlx_3dwindow, 2, 1L << 0, key_event, gamedata);
 	//mlx_hook(gamedata->mlx_window, 17, 1L << 17, exit_game, gamedata);
 	mlx_loop(gamedata->mlx);
 	return (0);
