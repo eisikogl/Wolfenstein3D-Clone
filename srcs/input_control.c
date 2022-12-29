@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 13:57:53 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:20:59 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,9 @@ int	key_event(int key, t_gamedata *gamedata)
 		left_arrow_key(gamedata);
 	if (key == 124)
 		right_arrow_key(gamedata);
-	if (key == 8734)
+	if (key == 53)
 	{
+		exit_game(gamedata);
 	}
 	return (0);
 }

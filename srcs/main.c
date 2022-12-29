@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 15:50:25 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:25:32 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,16 +131,13 @@ int	main(int argc, char **argv)
 		free(gamedata->mlx);
 		return (2);
 	}
-//	gamedata->map_path = argv[1];
-//	read_map(gamedata);
-//	gamedata->map_split = ft_split(gamedata->map, '\n');
 	init_2dwindow(gamedata);
 	init_3dwindow(gamedata);
 	init_textures(gamedata);
 	init_floor_ceiling(gamedata);
 	drawMap(gamedata);
 	mlx_hook(gamedata->mlx_3dwindow, 2, 1L << 0, key_event, gamedata);
-	//mlx_hook(gamedata->mlx_window, 17, 1L << 17, exit_game, gamedata);
+	mlx_hook(gamedata->mlx_3dwindow, 17, 1L << 17, exit_game, gamedata);
 	mlx_loop(gamedata->mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 14:26:16 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:25:14 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 int	exit_game(t_gamedata *gamedata)
 {
-	mlx_destroy_window(gamedata->mlx,gamedata->img2d);
-	mlx_destroy_window(gamedata->mlx,gamedata->img3dwin);
-	free(gamedata);
+	if(gamedata->mlx_3dwindow != NULL)
+		mlx_destroy_window(gamedata->mlx,gamedata->mlx_3dwindow);
+	system("leaks cube3d_mac");
+	exit(1);
 	return 0;
 }
 
