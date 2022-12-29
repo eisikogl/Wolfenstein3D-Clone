@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 06:08:23 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 17:12:38 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:58:54 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int	image_get_pixel(t_gamedata *img, int x, int y)
 	return (0);
 }
 
-void	drawline(t_gamedata *gamedata, int begx, int begy, int endx, \
-int endy, int color)
+void	drawline(t_gamedata *gamedata, int begx, int begy, int color)
 {
 	float	deltax;
 	float	deltay;
@@ -40,8 +39,8 @@ int endy, int color)
 	double	pixelx;
 	double	pixely;
 
-	deltax = endx - begx;
-	deltay = endy - begy;
+	deltax = gamedata->endx - begx;
+	deltay = gamedata->endy - begy;
 	pixels = sqrt((deltax * deltax) + (deltay * deltay));
 	deltax /= pixels;
 	deltay /= pixels;

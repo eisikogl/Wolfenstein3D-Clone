@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_control.c                                    :+:      :+:    :+:   */
+/*   input_control_funcs.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: calion <calion@student.42.fr>              +#+  +:+       +#+        */
+/*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/16 22:14:17 by calion           ###   ########.fr       */
+/*   Updated: 2022/12/29 19:25:13 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	w_key(t_gamedata *gamedata)
 	gamedata->player_x += gamedata->player_dx;
 	mlx_destroy_image(gamedata->mlx, gamedata->img2d);
 	mlx_destroy_image(gamedata->mlx, gamedata->img3dwin);
-	drawMap2(gamedata);
+	drawmap2(gamedata);
 }
 
 void	a_key(t_gamedata *gamedata)
@@ -27,7 +27,7 @@ void	a_key(t_gamedata *gamedata)
 	gamedata->player_y += sin(gamedata->player_angle - PI / 2) * 5;
 	mlx_destroy_image(gamedata->mlx, gamedata->img2d);
 	mlx_destroy_image(gamedata->mlx, gamedata->img3dwin);
-	drawMap2(gamedata);
+	drawmap2(gamedata);
 }
 
 void	s_key(t_gamedata *gamedata)
@@ -36,7 +36,7 @@ void	s_key(t_gamedata *gamedata)
 	gamedata->player_x -= gamedata->player_dx;
 	mlx_destroy_image(gamedata->mlx, gamedata->img2d);
 	mlx_destroy_image(gamedata->mlx, gamedata->img3dwin);
-	drawMap2(gamedata);
+	drawmap2(gamedata);
 }
 
 void	d_key(t_gamedata *gamedata)
@@ -45,5 +45,5 @@ void	d_key(t_gamedata *gamedata)
 	gamedata->player_y -= sin(gamedata->player_angle - PI / 2) * 5;
 	mlx_destroy_image(gamedata->mlx, gamedata->img2d);
 	mlx_destroy_image(gamedata->mlx, gamedata->img3dwin);
-	drawMap2(gamedata);
+	drawmap2(gamedata);
 }

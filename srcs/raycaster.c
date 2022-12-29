@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:20:07 by calion            #+#    #+#             */
-/*   Updated: 2022/12/29 16:40:50 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 20:29:41 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	drawrays(t_gamedata *gamedata)
 
 	mlx_clear_window(gamedata->mlx, gamedata->mlx_3dwindow);
 	ray_num = 0;
-	caster.ray_angle = gamedata->player_angle - Dgre * 30;
+	caster.ray_angle = gamedata->player_angle - DGRE * 30;
 	get_rayangle(gamedata, &caster);
 	while (ray_num < 2048)
 	{
@@ -96,7 +96,7 @@ void	drawrays(t_gamedata *gamedata)
 		shade = draw_2d_lines(gamedata, &caster);
 		get_current_angle(gamedata, &caster);
 		draw_3d_lines(gamedata, &caster, shade, ray_num);
-		caster.ray_angle += Dgre / 34;
+		caster.ray_angle += DGRE / 34;
 		get_rayangle(gamedata, &caster);
 		ray_num++;
 	}

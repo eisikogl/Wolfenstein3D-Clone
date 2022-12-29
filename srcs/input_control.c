@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 16:56:12 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:25:01 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	left_arrow_key(t_gamedata *gamedata)
 	gamedata->player_dy = sin(gamedata->player_angle) * 5;
 	mlx_destroy_image(gamedata->mlx, gamedata->img2d);
 	mlx_destroy_image(gamedata->mlx, gamedata->img3dwin);
-	drawMap2(gamedata);
+	drawmap2(gamedata);
 }
 
 void	right_arrow_key(t_gamedata *gamedata)
@@ -37,7 +37,7 @@ void	right_arrow_key(t_gamedata *gamedata)
 	gamedata->player_dy = sin(gamedata->player_angle) * 5;
 	mlx_destroy_image(gamedata->mlx, gamedata->img2d);
 	mlx_destroy_image(gamedata->mlx, gamedata->img3dwin);
-	drawMap2(gamedata);
+	drawmap2(gamedata);
 }
 
 int	key_event(int key, t_gamedata *gamedata)

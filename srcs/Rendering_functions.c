@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 17:19:54 by calion            #+#    #+#             */
-/*   Updated: 2022/12/29 17:08:25 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:55:59 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ void	pixelplayer(t_gamedata *gamedata)
 		++i;
 	}
 	drawrays(gamedata);
+	gamedata->endx = (gamedata->player_x + 2) - 2 * (-gamedata->player_dx);
+	gamedata->endy = (gamedata->player_y + 2) - 2 * gamedata->player_dy;
 	drawline(gamedata, gamedata->player_x + 2, gamedata->player_y + 2, \
-	(gamedata->player_x + 2) - 2 * (-gamedata->player_dx), \
-	(gamedata->player_y + 2) - 2 * gamedata->player_dy, 0x00FF0000);
+	0x00FF0000);
 }

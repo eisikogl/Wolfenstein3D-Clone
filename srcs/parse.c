@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_control.c                                    :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/21 05:55:06 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:37:01 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_check_valid_map_line(t_gamedata *cub, char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (!ft_strchr("10 NSEW\n\t", line[i]))
+		if (!ft_strchr("10 NSEW", line[i]))
 		{
 			printf("MAP ERROR: %c is not a valid char\n", line[i]);
 			return (0);

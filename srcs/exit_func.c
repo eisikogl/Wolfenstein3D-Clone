@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 17:04:20 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:12:59 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_error(char *msg)
 {
-	printf("%s",msg);
+	printf("%s\n", msg);
 	return (0);
 }
 
