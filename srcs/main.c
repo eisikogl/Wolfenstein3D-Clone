@@ -12,6 +12,8 @@
 
 #include "../includes/cube3d.h"
 
+
+
 int	init_main(t_gamedata *gamedata)
 {
 	gamedata->map = ft_calloc(1, sizeof(char *));
@@ -34,12 +36,11 @@ int	main(int argc, char **argv)
 	if (!gamedata)
 		return (0);
 	if (!init_main(gamedata))
-		return (0);
+		return (free_exit_main(gamedata));
 	if (!ft_check_file_extension(argv[1]) || !ft_parse_file(argv[1], gamedata))
 	{
 		ft_free_cub(gamedata);
-		free(gamedata->mlx);
-		return (2);
+		return (free_exit_main(gamedata));
 	}
 	init_2dwindow(gamedata);
 	init_3dwindow(gamedata);

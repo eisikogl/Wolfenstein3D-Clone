@@ -40,23 +40,43 @@ void	right_arrow_key(t_gamedata *gamedata)
 	drawmap2(gamedata);
 }
 
+// int	key_event(int key, t_gamedata *gamedata)
+// {
+// 	if (key == 13)
+// 		w_key(gamedata);
+// 	if (key == 0)
+// 		a_key(gamedata);
+// 	if (key == 1)
+// 		s_key(gamedata);
+// 	if (key == 2)
+// 		d_key(gamedata);
+// 	if (key == 123)
+// 		left_arrow_key(gamedata);
+// 	if (key == 124)
+// 		right_arrow_key(gamedata);
+// 	if (key == 53)
+// 	{
+// 		exit_game(gamedata);
+// 	}
+// 	return (0);
+// }
+
 int	key_event(int key, t_gamedata *gamedata)
 {
-	if (key == 13)
+	if (key == 119)
 		w_key(gamedata);
-	if (key == 0)
+	if (key == 97)
 		a_key(gamedata);
-	if (key == 1)
+	if (key == 115)
 		s_key(gamedata);
-	if (key == 2)
+	if (key == 100)
 		d_key(gamedata);
-	if (key == 123)
+	if (key == 65361)
 		left_arrow_key(gamedata);
-	if (key == 124)
+	if (key == 65363)
 		right_arrow_key(gamedata);
-	if (key == 53)
+	if (key == 65307)
 	{
-		exit_game(gamedata);
 	}
 	return (0);
 }

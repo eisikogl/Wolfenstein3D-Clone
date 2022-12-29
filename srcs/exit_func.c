@@ -12,6 +12,14 @@
 
 #include "../includes/cube3d.h"
 
+int	free_exit_main(t_gamedata *gamedata)
+{
+	free(gamedata->mlx);
+	free(gamedata->map);
+	free(gamedata);
+	return (0);
+}
+
 int	ft_error(char *msg)
 {
 	printf("%s\n", msg);
@@ -30,7 +38,7 @@ int	exit_game(t_gamedata *gamedata)
 {
 	if (gamedata->mlx_3dwindow != NULL)
 		mlx_destroy_window(gamedata->mlx, gamedata->mlx_3dwindow);
-	system("leaks cube3d_mac");
+	ft_free_cub(gamedata);
 	exit(1);
 	return (0);
 }

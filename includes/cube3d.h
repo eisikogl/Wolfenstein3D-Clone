@@ -129,6 +129,7 @@ typedef struct s_raycaster
 }t_raycaster;
 
 /*exit_func.c*/
+int		free_exit_main(t_gamedata *gamedata);
 int		ft_error(char *msg);
 void	ft_free_cub(t_gamedata *cub);
 int		exit_game(t_gamedata *gamedata);
@@ -186,7 +187,7 @@ void	find_pos_vertical(t_gamedata *gamedata, t_raycaster *caster);
 float	draw_2d_lines(t_gamedata *gamedata, t_raycaster *caster);
 /*raycaster.c*/
 float	dist(float beginx, float beginy, float endx, float endy);
-void	get_rayangle(t_gamedata *gamedata, t_raycaster *caster);
+void	get_rayangle(t_raycaster *caster);
 void	draw_3d_lines(t_gamedata *gd, t_raycaster *rc, \
 float shade, int ray_num);
 void	get_current_angle(t_gamedata *gamedata, t_raycaster *caster);

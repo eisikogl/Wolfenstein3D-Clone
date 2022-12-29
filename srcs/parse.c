@@ -120,7 +120,7 @@ int	ft_parse_file(char *filename, t_gamedata *cub)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		exit(1);
+		return (ft_error("Map not Found"));
 	line = get_next_line(fd);
 	num = 0;
 	while (line)

@@ -22,7 +22,7 @@ float	dist(float beginx, float beginy, float endx, float endy)
 	return (sqrt((deltax * deltax) + (deltay * deltay)));
 }
 
-void	get_rayangle(t_gamedata *gamedata, t_raycaster *caster)
+void	get_rayangle(t_raycaster *caster)
 {
 	if (caster->ray_angle < 0)
 	{
@@ -82,7 +82,7 @@ void	drawrays(t_gamedata *gamedata)
 	mlx_clear_window(gamedata->mlx, gamedata->mlx_3dwindow);
 	ray_num = 0;
 	caster.ray_angle = gamedata->player_angle - DGRE * 30;
-	get_rayangle(gamedata, &caster);
+	get_rayangle(&caster);
 	while (ray_num < 2048)
 	{
 		caster.disthori = 1000000;
@@ -97,7 +97,7 @@ void	drawrays(t_gamedata *gamedata)
 		get_current_angle(gamedata, &caster);
 		draw_3d_lines(gamedata, &caster, shade, ray_num);
 		caster.ray_angle += DGRE / 34;
-		get_rayangle(gamedata, &caster);
+		get_rayangle(&caster);
 		ray_num++;
 	}
 }

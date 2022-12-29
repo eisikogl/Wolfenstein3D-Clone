@@ -4,7 +4,7 @@ NAME_LINUX 	= cube3d_linux
 
 CC		= gcc
 
-CFLAGS	= #-Wall -Werror -Wextra
+CFLAGS	= -g #-Wall -Werror -Wextra -g
 
 SRCS	= $(wildcard srcs/*.c)
 

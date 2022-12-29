@@ -36,7 +36,6 @@ t_data	get_xpm_image(t_gamedata *cub, char *path)
 int	check_direction_path(t_gamedata *cub, char **split, int *num)
 {
 	char	*path;
-	t_data	img;
 
 	if (ft_splitlen(split) != 2)
 		return (0);
