@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 19:25:01 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/30 13:57:10 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,43 +40,23 @@ void	right_arrow_key(t_gamedata *gamedata)
 	drawmap2(gamedata);
 }
 
-// int	key_event(int key, t_gamedata *gamedata)
-// {
-// 	if (key == 13)
-// 		w_key(gamedata);
-// 	if (key == 0)
-// 		a_key(gamedata);
-// 	if (key == 1)
-// 		s_key(gamedata);
-// 	if (key == 2)
-// 		d_key(gamedata);
-// 	if (key == 123)
-// 		left_arrow_key(gamedata);
-// 	if (key == 124)
-// 		right_arrow_key(gamedata);
-// 	if (key == 53)
-// 	{
-// 		exit_game(gamedata);
-// 	}
-// 	return (0);
-// }
-
 int	key_event(int key, t_gamedata *gamedata)
 {
-	if (key == 119)
+	if (key == 13)
 		w_key(gamedata);
-	if (key == 97)
+	if (key == 0)
 		a_key(gamedata);
-	if (key == 115)
+	if (key == 1)
 		s_key(gamedata);
-	if (key == 100)
+	if (key == 2)
 		d_key(gamedata);
-	if (key == 65361)
+	if (key == 123)
 		left_arrow_key(gamedata);
-	if (key == 65363)
+	if (key == 124)
 		right_arrow_key(gamedata);
-	if (key == 65307)
+	if (key == 53)
 	{
+		exit_game(gamedata);
 	}
 	return (0);
 }

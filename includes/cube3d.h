@@ -6,11 +6,11 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:56:45 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 20:29:31 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:11:03 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef CUBE3D_H
+#ifndef CUBE3D_H
 # define CUBE3D_H
 
 # include <stdio.h>
@@ -29,21 +29,9 @@
 # define P3 4.71238898039
 # define DGRE 0.0174533
 
-typedef struct s_data{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_data;
-
 typedef struct s_gamedata
 {
-	t_data		img;
 	void		*mlx;
-	void		*mlx_window;
-	void		*img_player;
-	void		*img_wall;
 	void		*mlx_3dwindow;
 
 	float		player_x;
@@ -55,7 +43,6 @@ typedef struct s_gamedata
 
 	int			mapx;
 	int			mapy;
-	char		*map_path;
 	char		**map;
 
 	size_t		map_w;
@@ -92,9 +79,8 @@ typedef struct s_gamedata
 	int			texture_bits_per_pixel;
 	int			texture_length;
 	int			texture_endian;
-	char		ray_orientation;
 
-	float		rayangle;
+	char		ray_orientation;
 
 	char		starting_way;
 
@@ -204,7 +190,6 @@ size_t	ft_splitlen(char **split);
 void	ft_free_split(char **split);
 int		ft_check_file_extension(char *name);
 /*utils2.c*/
-t_data	get_xpm_image(t_gamedata *cub, char *path);
 int		check_direction_path(t_gamedata *cub, char **split, int *num);
 int		check_color_code(t_gamedata *cub, char **split, int *num);
 int		is_valid_param(t_gamedata *cub, char *line, int *num);

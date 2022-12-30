@@ -6,33 +6,12 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:55:50 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 20:01:33 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:02:00 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-t_data	get_xpm_image(t_gamedata *cub, char *path)
-{
-	t_data	img;
-	int		w;
-
-	w = 64;
-	img.img = mlx_xpm_file_to_image(cub->mlx, path, &w, &w);
-	if (!img.img)
-	{
-		free(path);
-		return (img);
-	}
-	img.addr = mlx_get_data_addr(img.img,
-			&img.bits_per_pixel, &img.line_length,
-			&img.endian);
-	return (img);
-}
-
-/*
- * Check if the files for the textures exist and save the path
- * on the cub structure.  */
 int	check_direction_path(t_gamedata *cub, char **split, int *num)
 {
 	char	*path;
@@ -54,10 +33,6 @@ int	check_direction_path(t_gamedata *cub, char **split, int *num)
 	return (1);
 }
 
-/*
- * Check if the colors for the floor and cealing are valid 
- * and save them on the cub structure.
- */
 int	check_color_code(t_gamedata *cub, char **split, int *num)
 {
 	char	**colors;

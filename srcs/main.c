@@ -6,13 +6,11 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 19:45:34 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/30 13:49:37 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
-
-
 
 int	init_main(t_gamedata *gamedata)
 {

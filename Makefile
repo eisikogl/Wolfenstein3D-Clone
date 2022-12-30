@@ -1,45 +1,34 @@
-NAME_MAC	= cube3d_mac
-
-NAME_LINUX 	= cube3d_linux
+NAME	= cube3d
 
 CC		= gcc
 
-CFLAGS	= -g #-Wall -Werror -Wextra -g
+CFLAGS	= -Wall -Werror -Wextra
 
 SRCS	= $(wildcard srcs/*.c)
 
-
 OBJS	= $(SRCS:%.c=%.o)
 
-$(NAME_MAC):$(OBJS)
+$(NAME):$(OBJS)
 		make -C ./libs/mlx
 		mv ./libs/mlx/libmlx.a ./libmlx.a
 
 		make -C ./libs/Libft
 		mv ./libs/Libft/libft.a ./libft.a
 
-		$(CC) $(CFLAGS) $(SRCS) -framework OpenGL -framework AppKit libmlx.a libft.a -o $(NAME_MAC)
+		$(CC) $(CFLAGS) $(SRCS) -framework OpenGL -framework AppKit libmlx.a libft.a -o $(NAME)
 
-$(NAME_LINUX):$(OBJS)
-		make -C ./libs/mlx
-		mv ./libs/mlx/libmlx.a ./libmlx_Linux.a
-
-		make -C ./libs/Libft
-		mv ./libs/Libft/libft.a ./libft.a
-
-		$(CC) $(CFLAGS) $(SRCS) libmlx_Linux.a libft.a -L/usr/lib -lXext -lX11 -lm -o $(NAME_LINUX)
-all: 	$(NAME_MAC)
+all: 	$(NAME)
 
 clean:
 		make -C ./libs/mlx clean
-		rm -rf */*.o libmlx_Linux.a cube3d_linux.o
+		rm -rf */*.o libmlx.a cube3d.o
 
 		make -C ./libs/Libft fclean
 		rm -rf */*.o libft.a
 
 		
 fclean: clean
-		rm -rf cube3d_linux
+		rm -rf cube3d
 
 re: 	fclean all
 
