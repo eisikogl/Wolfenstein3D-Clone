@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/09 06:08:23 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/29 16:49:58 by eisikogl         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:14:13 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,16 +105,3 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*
-int main()
-{
-	int fd;
-//	int i = 0;
-	fd = open("Hello.txt", O_RDONLY);
-	char *line;
-	line = get_next_line(fd);
-	//line = get_next_line(fd);
-	//line = get_next_line(fd);
-	printf("%s \n", line);
-}
-*/
