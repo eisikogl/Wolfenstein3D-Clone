@@ -4,24 +4,7 @@ CC		= gcc
 
 CFLAGS	= -Wall -Werror -Wextra
 
-SRCS	=	./srcs/exit_func.c \
-			./srcs/init_func.c \
-			./srcs/input_control_funcs.c \
-			./srcs/input_control.c \
-			./srcs/line_drawing.c \
-			./srcs/main.c \
-			./srcs/map_drawing.c \
-			./srcs/map_utils.c \
-			./srcs/parse_map.c \
-			./srcs/parse.c \
-			./srcs/pixel_drawing.c \
-			./srcs/raycaster_functions.c \
-			./srcs/raycaster.c \
-			./srcs/rendering_functions.c \
-			./srcs/utils.c \
-			./srcs/utils2.c \
-			./srcs/get_next_line_utils.c \
-			./srcs/get_next_line.c \
+SRCS	=	$(wildcard srcs/*.c)
 			
 
 OBJS	= $(SRCS:%.c=%.o)

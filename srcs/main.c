@@ -6,7 +6,7 @@
 /*   By: eisikogl <eisikogl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 14:42:20 by eisikogl          #+#    #+#             */
-/*   Updated: 2022/12/30 13:49:37 by eisikogl         ###   ########.fr       */
+/*   Updated: 2023/03/10 14:37:41 by eisikogl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ int	main(int argc, char **argv)
 	t_gamedata	*gamedata;
 
 	if (argc != 2)
+	{
 		printf("add map \n");
+		exit(1);
+	}
 	gamedata = malloc(sizeof(t_gamedata));
 	if (!gamedata)
 		return (0);
