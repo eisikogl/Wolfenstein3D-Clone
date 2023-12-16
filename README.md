@@ -1,4 +1,4 @@
-# Cub3D
+# Wolfenstein-3D-Raycasting_C
 using raycasting
 ![raycast start](https://github.com/misikogl/Cub3D/assets/89875821/4983d100-3844-490c-b320-91abf231d45e)
 
